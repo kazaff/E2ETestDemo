@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>login demo</title>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+		<!-- Bootstrap 3.3.5 -->
+		<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
+		<!-- Ionicons -->
+		<link rel="stylesheet" href="../../assets/css/ionicons.min.css" />
+		<!-- Theme style -->
+		<link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css" />
+		<!--loading-->
+		<link rel="stylesheet" href="../../assets/css/fw.css" />
+		<!--[if lt IE 9]>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="hold-transition skin-blue login-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="login-box">
+						<div class="login-box-body">
+							<h3 class="login-box-msg">welcome to kazaff demo</h3>
+							<form id="form_login" class="form-horizontal" style="position: relative;">
+								<div class="box-body" style="position: absolute;">
+									<div class="form-group center-block">
+										<div id="loading" style="display:none;">
+											<i class="loadingicon"></i>
+											<span>loading...</span>
+										</div>
+									</div>
+								</div>
+								<div class="box-body">
+									<div class="form-group">
+										<label for="input_login_username" class="col-xs-3 control-label">Username</label>
+										<div class="col-xs-9">
+											<input id="input_login_username" type="text" class="form-control" placeholder="Username" name="account" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="input_login_password" class="col-xs-3 control-label">Password</label>
+										<div class="col-xs-9">
+											<input id="input_login_password" type="password" class="form-control" placeholder="Password" name="password" />
+										</div>
+									</div>
+								</div>
+								<!--form button-->
+								<div class="box-footer">
+									<div id="area_login" class="col-xs-10 col-xs-offset-1">
+										<button type="reset" class="btn btn-info" id="btn_login_cancel">Reset</button>
+										<button type="submit" class="btn btn-primary pull-right" id="btn_login_sign" disabled="disabled">Sign in</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+						<!-- /.login-box-body -->
+					</div>
+					<!-- /.login-box -->
+				</div>
+			</div>
+		</div>
+
+
+		<script src="../../assets/js/lodash.js"></script>
+		<!-- jQuery 2.1.4 -->
+		<script src="../../assets/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../assets/layer/layer.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+		<!--validator form-->
+		<script src="../../assets/validator/bootstrapValidator.js"></script>
+
+		<script type="text/javascript">
+			//检测
+			if (window.localStorage) {
+				sessionStorage.removeItem("user");
+			} else {
+				alert('This browser does NOT support localStorage');
+			}
+
+			//表单序列化
+			if (typeof jQuery != "undefined") {
+				(function ($) {
+					$.fn.serializeObject = function () {
+						var o = {};
+						var a = this.serializeArray();
+						//alert("array:\n"+a);
+						$.each(a, function () {
+							if (o[this.name]) {
+								//!o[this.name].push
+								if ($.isArray(o[this.name])) {
+									o[this.name] = [o[this.name]];
+								}
+								o[this.name].push(this.value || '');
+							} else {
+								o[this.name] = this.value || '';
+							}
+						});
+						return o;
+					};
+				})(jQuery);
+			}
+
+			//初始化表单
+			function form_init() {
+				$('#form_login').bootstrapValidator({
+					//message: 'This value is not valid',   //提示
+					feedbackIcons: { //回调图标
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: { //校验字段
+						account: {
+							//message: 'The username is not valid',
+							validators: {
+								notEmpty: {
+									// message: 'The username is required and cannot be empty'
+								},
+								stringLength: {
+									min: 6,
+									max: 60,
+									//message: 'The username must be more than 6 and less than 30 characters long'
+								},
+								regexp: {
+									regexp: /^[a-zA-Z0-9_\.]+$/,
+									// message: 'The username can only consist of alphabetical, number, dot and underscore'
+								}
+							}
+						},
+						password: {
+							validators: {
+								notEmpty: {
+									//message: 'The password is required and cannot be empty'
+								},
+								different: {
+									field: 'account',
+									// message: 'The password cannot be the same as username'
+								},
+								stringLength: {
+									min: 6,
+									max: 30,
+									//message: 'The username must be more than 6 and less than 30 characters long'
+								}
+							}
+						}
+					}
+				});
+
+				$('#form_login input').on('blur', function() {
+					if ($("#form_login").find('.glyphicon-ok').length != 2)
+						$('#btn_login_sign').attr('disabled', 'disabled');
+				});
+			}
+
+			//初始化
+			$(function() {
+				mockLogic(2, function() {
+					form_init();
+				});
+
+				//用户重置
+				$("#btn_login_cancel").bind('click', function(e) {
+					e.preventDefault();
+					$('#form_login').data('bootstrapValidator').resetForm(true);
+				});
+
+				//用户登录
+				$('#btn_login_sign').bind('click', function(e) {
+					e.preventDefault();
+					//请求参数。
+					var form_data = $("#form_login").serializeObject();
+					$.ajax({
+						type: 'POST',
+						url: "./login.json",
+						data: form_data,
+					}).done(function(data) {
+						layer.closeAll();
+						sessionStorage.removeItem("user");
+						var _current = {
+							name: data.username
+						};
+						sessionStorage.setItem("user", JSON.stringify(_current));
+						window.location.href = './welcome.html';
+					}).fail(function(jqXHR, textStatus) {
+					  alert( "Request failed: " + textStatus );
+					});
+				});
+			});
+
+			function mockLogic(waitTime, callback) {
+				setTimeout(callback, waitTime * 1000);
+			}
+		</script>
+	</body>
+
+</html>
