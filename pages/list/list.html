@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>List Demo</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+		<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../assets/css/ionicons.min.css" />
+		<link href="../../assets/switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+		<link href="../../assets/animate/animate.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../assets/select2/css/select2.min.css" />
+		<link rel="stylesheet" href="../../assets/css/fw.css?v=1.06" />
+		<link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css" />
+		<link rel="stylesheet" href="../../assets/dist/css/skins/skin-blue.min.css" />
+		<!--[if lt IE 9]>
+	  <script src="../../assets/js/respond.min.js"></script>
+	  <![endif]-->
+
+		<style type="text/css">
+			th,
+			td {
+				text-align: center !important;
+				/*word-wrap: break-word;*/
+			}
+
+			table {
+				table-layout: fixed;
+			}
+
+			.input_date {
+				margin: 0px 10px 0px 10px;
+				display: inline-block!important;
+				width: auto!important;
+				float: none!important;
+				background-color: #fff!important;
+			}
+
+			.Wdate {
+				height: auto!important;
+				border-color: #d2d6de!important;
+			}
+
+			.table_word_row {
+				min-width: 92px;
+				max-width: 215px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.logbookStatus {
+				display: inline-block;
+				word-wrap: break-word;
+				white-space: normal;
+			}
+		</style>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<!-- Main Header -->
+			<header class="main-header">
+				<!-- Header Navbar -->
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-left:0">
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account Menu -->
+							<li class="dropdown user user-menu">
+								<!-- Menu Toggle Button -->
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<!-- The user image in the navbar--><img src="" class="user-image" alt="User Image" />
+									<!-- hidden-xs hides the username on small devices so only the image appears. --><span class="hidden-xs"></span></a>
+
+								<ul class="dropdown-menu">
+									<li class="user-header" id="btn_header_account"> <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+									</li>
+									<li class="user-footer">
+										<div class="pull-right">
+											<a id="btn_header_account_signout" class="btn btn-default btn-flat">Sign out</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Control Sidebar Toggle Button-->
+							<li style="display: none;">
+								<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+							</li>
+
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper" style="margin-left:0">
+				<!-- Main content -->
+				<section class="content">
+					<div class="row animated fadeInRight">
+						<div class="col-xs-12">
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<div class="col-xs-2" style="margin-top: 8px;width: auto;">
+										<h3 class="box-title" class="">List</h3>
+									</div>
+								</div>
+								<!-- form start -->
+								<form class="form-inline" role="form" onsubmit="return false;">
+									<div class="box-body">
+										<div class="form-group col-xs-5" style="width: auto;">
+											<div class="input-group">
+												<span>time</span>
+												<input type="text" class="form-control input_date Wdate" id="startDate" onClick="WdatePicker({maxDate:'#F{$dp.$D(\'endDate\')}'})" readonly="readonly" />
+												<span>~</span>
+												<input type="text" class="form-control input_date Wdate" id="endDate" onClick="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})" readonly="readonly" />
+											</div>
+										</div>
+										<div class="form-group">
+											<a class="btn btn-info" id="searchBtn" role="button">search</a>
+										</div>
+									</div>
+								</form>
+								<div class="box-body">
+									<table id="mine" class="table table-bordered table-striped mine-table" width="100%">
+										<thead>
+											<tr>
+												<th style="width:10%;">create time</th>
+												<th style="width:7%;">sender</th>
+												<th style="width:7%;">status</th>
+												<th style="width:11%;">resolve time</th>
+												<th style="width:8%;">resolved by</th>
+												<th style="width:7%;">priority</th>
+												<th style="width:7%;">guest name</th>
+												<th style="width:7%;">room number	</th>
+												<th style="width:11%;">journal</th>
+												<th style="width:10%;">comments number	</th>
+												<th style="width:15%;">option</th>
+											</tr>
+										</thead>
+										<tbody id="dataBody">
+
+										</tbody>
+									</table>
+								</div>
+								<div class="box-footer clearfix">
+									<div class="page-right " style="float: right">
+										<div class="left_black_img" id="prepage"></div>
+										<span class="mid_pageNum"><span id="currentPage">1</span>/<span id="totalPage">1</span></span>
+										<div class="right_black_img" id="nextpage"></div>
+										<span class="footdj">Go</span>
+										<input class="jump_input" oninput="onlyNum(this)" type="text" id="currentInput" style="text-align:center">
+										<span class="footdj">Page</span>
+										<span class="jump_btn" id="jump_btn">Confirm</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- /.content -->
+			</div>
+			<!-- /.content-wrapper -->
+			<!-- Main Footer -->
+			<footer class="main-footer" style="margin-left:0">
+				<!-- To the right -->
+				<div class="pull-right hidden-xs">
+					Anything you want
+				</div>
+				<!-- Default to the left -->
+				<strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+			</footer>
+			<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- ./wrapper -->
+		<!-- REQUIRED JS SCRIPTS -->
+		<script src="../../assets/js/lodash.js"></script>
+		<!-- jQuery 2.1.4 -->
+		<script src="../../assets/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../assets/jQuery/jquery.tmpl.js"></script>
+		<script src="../../assets/layer/layer.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+		<!--swicth-->
+		<script type="text/javascript" src="../../assets/switch/dist/js/bootstrap-switch.js"></script>
+		<!--moment-->
+		<script src="../../assets/js/moment.min.js"></script>
+		<script src="../../assets/fullCanlender/js/moment-timezone-with-data.js"></script>
+		<!--select2-->
+		<script src="../../assets/select2/js/select2.full.min.js"></script>
+		<!--My97-->
+		<script src="../../assets/My97DatePicker/WdatePicker.js"></script>
+		<!-- AdminLTE App -->
+		<script src="../../assets/dist/js/app.min.js"></script>
+		<script type="text/javascript">
+			window.getRequestQuery = function getRequestQuery(strName, optway) {
+				var strHref = window.location.toString();
+				var intPos = strHref.indexOf("?");
+				if(intPos == -1) return '';
+				var strRight = strHref.substr(intPos + 1);
+				if(optway == 'string') return strRight;
+
+				var arrTmp = strRight.split("&");
+				var queryObj = {};
+				for(var i = 0; i < arrTmp.length; i++) {
+					var arrTemp = arrTmp[i].split("=");
+					if(arrTemp.length == 2) {
+						if(!optway) {
+							if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+							queryObj = '';
+						} else if(optway == 'object') {
+							queryObj[arrTemp[0]] = arrTemp[1];
+						}
+					} else if(arrTemp.length == 1) {
+						if(!optway) {
+							if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[0];
+							queryObj = '';
+						} else if(optway == 'object') {
+							queryObj[arrTemp[0]] = '';
+						}
+					} else {
+						console.error(' getRequestQuery failed ');
+					}
+				}
+				return queryObj;
+			};
+
+			window.getPageNum = function getPageNum(totalLineNum, pageSize) {
+				var pageNum = 1;
+				if(totalLineNum == 0) {
+					pageNum = 1;
+					return pageNum;
+				}
+				pageNum = Math.ceil(totalLineNum / pageSize);
+				return pageNum;
+			}
+
+			//本页信息
+			var pageJsonMap = {};
+			pageJsonMap.size = 10; //列表的长度暂定为10，
+			var timeZone = "EST5EDT"; //获取时区
+			moment.tz.setDefault(timeZone); //变更时区
+			$(function() {
+					//监听键盘，快捷键操作
+					document.onkeydown = keyevent;
+					//页面初始化，包括数据加载和权限判定
+					initPage();
+					$(".select2").select2();
+				}
+
+			);
+			//页面初始化
+			function initPage() {
+				//当前用户
+				pageJsonMap.current = {
+						"user": {
+								"id": 1,
+								"isAdmin": 1,
+								"name": "Default Admin",
+								"phone": "111111",
+								"mail": "",
+								"account": "adminTest",
+								"password": "e1das0adcasd3a949b1ad59abdfbes56e012!@#1sd57f20f883e",
+								"face": "",
+								"position": "",
+								"remark": "",
+								"status": 1,
+								"hotel": null,
+								"department": null
+						},
+						"authKey": "e94fc417-45e4-48f5-a30e-550f07a8643e",
+						"currentHotel": 1,
+						"currentHotelName": "Hilton Hasbrouck Heights",
+						"hotelHtml": "<option value='0'>Corporate Office</option><option selected=selected value=1>Hilton Hasbrouck Heights</option><option value=2>Crowne Plaza Edison</option>",
+						"hotels": [{
+								"id": 1,
+								"status": 1,
+								"firstday": 5,
+								"name": "Hilton Hasbrouck Heights",
+								"marketingNumber": "",
+								"roomtotal": 355,
+								"remark": null,
+								"timezone": "EST",
+								"rooms": [{
+										"category": "Hasbrouck Room - 1 King",
+										"number": 98
+								}, {
+										"category": "Hasbrouck Room - 2 Double",
+										"number": 184
+								}, {
+										"category": "NYC Skyline View - 1 King",
+										"number": 22
+								}, {
+										"category": "NYC Skyline View 2 - Double",
+										"number": 27
+								}, {
+										"category": "1 King Accessible with Roll-in Shower",
+										"number": 5
+								}, {
+										"category": "1 King Junior Suite Accessible with Roll-in Shower",
+										"number": 1
+								}, {
+										"category": "2 Double Accessible with Bathtub",
+										"number": 4
+								}, {
+										"category": "Junior Suite",
+										"number": 10
+								}, {
+										"category": "NYC Skyline Suite",
+										"number": 1
+								}, {
+										"category": "1 King City View Suite Accessible with Roll-in Shower",
+										"number": 1
+								}, {
+										"category": "1 King Presidential Accessible with Roll-in Shower",
+										"number": 1
+								}, {
+										"category": "Presidential Suite",
+										"number": 1
+								}],
+								"brand": {
+										"id": 1,
+										"name": "Hilton",
+										"parentid": 0,
+										"remark": "",
+										"isParent": null
+								}
+						}, {
+								"id": 2,
+								"status": 1,
+								"firstday": 6,
+								"name": "Crowne Plaza Edison",
+								"marketingNumber": "",
+								"roomtotal": 169,
+								"remark": null,
+								"timezone": "EST",
+								"rooms": [{
+										"category": "King Presidential Suite",
+										"number": 2
+								}, {
+										"category": "King Junior Suite",
+										"number": 3
+								}, {
+										"category": "King Executive",
+										"number": 24
+								}, {
+										"category": "King Standard",
+										"number": 63
+								}, {
+										"category": "King Handicup Tub",
+										"number": 3
+								}, {
+										"category": "King Handicup Roll-in Shower",
+										"number": 2
+								}, {
+										"category": "Doubles Standard",
+										"number": 56
+								}, {
+										"category": "Doubles Handicup Tub",
+										"number": 4
+								}, {
+										"category": "Doubles Executive",
+										"number": 12
+								}],
+								"brand": {
+										"id": 2,
+										"name": "Intercontinental Hotel Group",
+										"parentid": 0,
+										"remark": "",
+										"isParent": null
+								}
+						}]
+				};
+				//获取权限
+				pageJsonMap.userCenter = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "btn_basic_userList_editor2",
+					link_id: 300,
+					link_url: "",
+					order: 7,
+					parentId: 21,
+					service_id: 214
+				};
+				pageJsonMap.getLogbookList = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "",
+					link_id: "getLogbookList",
+					link_url: "list.json",
+					order: 1,
+					status: 1,
+					service_id: 67
+				};
+				pageJsonMap.getUserList = {
+					className: "",
+					isDir: false,
+					key: "",
+					link_id: "getUserList",
+					link_url: "users.json",
+					order: 3
+				};
+				pageJsonMap.markLogbookAsResolved = {
+					className: "",
+					isDir: false,
+					key: "",
+					link_id: "markLogbookAsResolved",
+					link_url: "status.json",
+					order: 1,
+					status: 1,
+					service_id: 71
+				};
+				pageJsonMap.logBookDetal = {
+					className: "",
+					isDir: false,
+					key: "menu_logBook_Detail",
+					link_id: "logBookDetal",
+					link_url: "",
+					order: 3,
+					parentId: "menu_logbook_list"
+				};
+				pageJsonMap.logBookEdite = {
+					className: "",
+					isDir: false,
+					key: "menu_logBook_Edite",
+					link_id: "logBookEdite",
+					link_url: "",
+					order: 3,
+					parentId: "menu_logbook_list"
+				};
+
+				//分页事件
+				$(document).on("click", "#prepage", goToPrePage);
+				$(document).on("mouseover", "#prepage", prepageChangeColor1);
+				$(document).on("mouseout", "#prepage", prepageChangeColor2);
+				$(document).on("click", "#nextpage", goToNextPage);
+				$(document).on("mouseover", "#nextpage", nextpageChangeColor1);
+				$(document).on("mouseout", "#nextpage", nextpageChangeColor2);
+				$(document).on("click", "#jump_btn", goToPage);
+				//搜索框,排序
+				$(document).on("click", "#searchBtn", searchKeywords);
+				//用户中心
+				$(document).on("click", "#btn_personalCenter", userCenter);
+				$(document).on("click", ".logbookSolve", function() {
+					logbookSolve(this);
+				});
+
+				$("#startDate").val(moment().format('YYYY-MM-DD'));
+				$("#endDate").val(moment().format('YYYY-MM-DD'));
+
+				getUserList();
+			}
+			//个人中心跳转
+			function userCenter() {
+				window.location.href = pageJsonMap.userCenter.link_url;
+			}
+
+
+			function replaceParamVal(paramName, replaceWith) {
+				var oUrl = this.location.href.toString();
+				var re = eval('/(' + paramName + '=)([^&]*)/gi');
+				var nUrl = oUrl.replace(re, paramName + '=' + replaceWith);
+				return nUrl;
+			}
+
+			//获取用户列表信息
+			function getUserList() {
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.getUserList.link_url,
+					data: {}
+				}).done(function(data) {
+					if(data.users != undefined && data.users.length > 0) {
+						pageJsonMap.userList = data.users;
+						getData();
+					}
+				});
+			}
+
+			//列表查询
+			function getData() {
+				initFormalStatus();
+				var query = getRequestQuery(null, 'object');
+				var startDate = $("#startDate").val() + " 00:00:00";
+				var endDate = $("#endDate").val() + " 23:59:59";
+				startDate = moment(startDate).unix();
+				endDate = moment(endDate).unix();
+
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.getLogbookList.link_url,
+					data: {
+						hotelid: pageJsonMap.current.currentHotel,
+						page: query.page||1,
+						size: pageJsonMap.size,
+						start: query.sTime || startDate,
+						end: query.eTime || endDate
+					}
+				}).done(function(data) {
+					$("#dataBody").empty();
+					if(data.logbooks.length > 0) {
+						for(var i = 0; i < data.logbooks.length; i++) {
+							//根据id，添加对应人姓名
+							for(var k = 0; k < pageJsonMap.userList.length; k++) {
+								//发出人姓名
+								if(data.logbooks[i].createid == pageJsonMap.userList[k].id) {
+									data.logbooks[i].createrName = pageJsonMap.userList[k].name;
+								}
+								//解决人姓名
+								if(data.logbooks[i].complateid == pageJsonMap.userList[k].id) {
+									data.logbooks[i].complateName = pageJsonMap.userList[k].name;
+								}
+							}
+						}
+
+						data.current = pageJsonMap;
+						$("#searchListTmpl").tmpl(data).appendTo("#dataBody");
+						var pageNum = getPageNum(data.total, pageJsonMap.size);
+						$("#totalPage").text(pageNum);
+						$("#currentPage").text(query.page);
+					}
+				});
+			}
+
+			function initFormalStatus() {
+				var query = getRequestQuery(null, 'object');
+				if(query.sTime) {
+					var query = getRequestQuery(null, 'object');
+					$("#startDate").val(moment(query.sTime * 1000).format("YYYY-MM-DD"));
+					$("#endDate").val(moment(query.eTime * 1000).format("YYYY-MM-DD"));
+					$("#currentInput").val(query.page);
+					$("#currentPage").text(query.page);
+				}
+			}
+
+			function nextpageChangeColor1() {
+				var curPage = parseInt($("#currentPage").text());
+				var totalPage = parseInt($("#totalPage").text());
+				if(curPage < totalPage) {
+					$("#nextpage").css("background",
+						"url(../../assets/css/images/bRight.png)");
+				}
+			}
+
+			function nextpageChangeColor2() {
+				$("#nextpage").css("background",
+					"url(../../assets/css/images/wRight.png)");
+			}
+
+			function prepageChangeColor1() {
+				var curPage = parseInt($("#currentPage").text());
+				if(curPage > 1) {
+					$("#prepage").css("background",
+						"url(../../assets/css/images/bLeft.png)");
+				}
+			}
+
+			function prepageChangeColor2() {
+				$("#prepage").css("background",
+					"url(../../assets/css/images/wLeft.png)");
+			}
+
+			function goToPage() {
+				var inputPage = parseInt($("#currentInput").val());
+				var totalPage = parseInt($("#totalPage").text());
+				if(!inputPage || inputPage < 1 || inputPage > totalPage) {
+					layer.msg("error page");
+					return;
+				}
+
+				$("#currentPage").text(inputPage);
+				history.replaceState(null, "", replaceParamVal("page", inputPage));
+				getData();
+			}
+
+			function goToPrePage() {
+				var curPage = parseInt($("#currentPage").text());
+				if(curPage <= 1) {
+					layer.msg("first page");
+					return;
+				}
+
+				$("#currentPage").text(curPage - 1);
+				history.replaceState(null, "", replaceParamVal("page", curPage - 1));
+				getData();
+			}
+
+			function goToNextPage() {
+				var curPage = parseInt($("#currentPage").text());
+				var totalPage = parseInt($("#totalPage").text());
+				if(curPage >= totalPage) {
+					layer.msg("last page");
+					return;
+				}
+
+				$("#currentPage").text(curPage + 1);
+				history.replaceState(null, "", replaceParamVal("page", curPage + 1));
+				getData();
+			}
+
+			function onlyNum(obj) {
+				obj.value = obj.value.replace(/[^\d]/g,
+					'');
+			}
+
+			//关键字查询
+			function searchKeywords() {
+				var sTime = $("#startDate").val()+" "+"00:00:00";
+				var eTime = $("#endDate").val()+" "+"23:59:59";
+				history.replaceState(null, "", replaceParamVal("sTime", moment(sTime).unix()));
+				history.replaceState(null, "", replaceParamVal("eTime", moment(eTime).unix()));
+				getData();
+			}
+
+			//快捷键
+			function keyevent() {
+				if(event.keyCode == 13 && $("#currentInput").is(":focus")) {
+					goToPage();
+					return;
+				}
+				if(event.keyCode == 13 && !$("#currentInput").is(":focus")) {
+					searchKeywords();
+					return;
+				}
+			}
+
+			function logbookSolve(e) {
+				var id = $(e).attr("data-id");
+				layer.confirm("Are you sure you want to solve it?", {
+					skin: 'layui-layer-lan',
+					closeBtn: 0,
+					title: "Hint",
+					btn: ["confirm", "cancel"],
+					yes: function(index) {
+
+						$.ajax({
+							type: 'POST',
+							url: pageJsonMap.markLogbookAsResolved.link_url,
+							data: {}
+						}).done(function(data) {
+							layer.msg("solved");
+							$(e).parent().parent().remove();
+							//分类上剩余未解决数量
+							var leftNum = $(".btnSortChecked").find('small').text();
+							$(".btnSortChecked").find('small').html(parseInt(leftNum) - 1);
+						});
+
+						layer.closeAll();
+					}
+				})
+
+			}
+		</script>
+		<script id="searchListTmpl" type="text/x-jquery-tmpl">
+			{{each(i,logbooks) logbooks}}
+			<tr>
+				<td>{{= moment(createtime).format('YYYY-MM-DD HH:mm:ss')}}</td>
+				<td>
+					{{if createrName}}
+					<span>{{= createrName}}</span> {{else}}
+					<span>--</span> {{/if}}
+				</td>
+				<td>
+					{{if status == 1}}
+					<span class="logbookStatus label label-success">solved</span> {{else}}
+					<span class="logbookStatus label label-warning">unsolved</span> {{/if}}
+				</td>
+				<td>
+					{{if complatetime==null||complatetime=="null"}}
+					<span>--</span> {{else}}
+					<span>{{= moment(complatetime).format('YYYY-MM-DD HH:mm:ss')}}</span> {{/if}}
+				</td>
+				<td>
+					{{if complateName}}
+					<span>{{= complateName}}</span> {{else}}
+					<span>--</span> {{/if}}
+				</td>
+				<td>
+					{{if priority == 0}}
+					<span class="label label-primary">normal</span> {{else priority == 1}}
+					<span class="label label-warning">urgent</span> {{else priority == 2}}
+					<span class="label label-danger">critical</span> {{/if}}
+				</td>
+				<td>
+					{{if customer}}
+					<span>{{= customer}}</span> {{else}}
+					<span>--</span> {{/if}}
+				</td>
+				<td>
+					{{if room}}
+					<span>{{= room}}</span> {{else}}
+					<span>--</span> {{/if}}
+				</td>
+				<td class="table_word_row" title="{{= content}}">{{= content}}</td>
+				<td>{{= commentcount}}</td>
+				<td>
+					<a href="{{= current.logBookDetal.link_url}}id={{= id}}" class="btn btn-info" role='buttom'>view</a>
+					<a href="{{= current.logBookEdite.link_url}}id={{= id}}" class="btn btn-success" role='buttom'>edit</a>
+					{{if status == 0}}
+					<a data-id="{{= id}}" class="logbookSolve btn btn-warning" role='buttom'>solve</a>
+					{{/if}}
+				</td>
+			</tr>
+			{{/each}}
+		</script>
+	</body>
+
+</html>

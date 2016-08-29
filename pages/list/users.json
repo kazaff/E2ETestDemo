@@ -1,0 +1,820 @@
+{
+    "users": [{
+        "id": 1,
+        "isAdmin": 1,
+        "name": "Admin NI",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "admin ",
+        "remark": null,
+        "status": 1,
+        "hotels": null,
+        "departments": null
+    }, {
+        "id": 37,
+        "isAdmin": 0,
+        "name": "shi weijia",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "后勤",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 1,
+            "name": "睡莲酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }, {
+            "id": 2,
+            "name": "如家酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 1,
+            "hotelid": 1,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 2,
+            "hotelid": 1,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 10,
+            "hotelid": 2,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 11,
+            "hotelid": 2,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 3,
+            "hotelid": 1,
+            "name": "Housekeeping",
+            "userInfo": null
+        }, {
+            "id": 4,
+            "hotelid": 1,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 5,
+            "hotelid": 1,
+            "name": "Front Desk",
+            "userInfo": null
+        }, {
+            "id": 6,
+            "hotelid": 1,
+            "name": "Kitchen",
+            "userInfo": null
+        }, {
+            "id": 7,
+            "hotelid": 1,
+            "name": "Maintenance",
+            "userInfo": null
+        }, {
+            "id": 8,
+            "hotelid": 1,
+            "name": "Restaurant",
+            "userInfo": null
+        }, {
+            "id": 9,
+            "hotelid": 1,
+            "name": "Banquet",
+            "userInfo": null
+        }]
+    }, {
+        "id": 38,
+        "isAdmin": 0,
+        "name": "zhang xiaoyu",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "宴会厅",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 1,
+            "name": "睡莲酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 1,
+            "hotelid": 1,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 2,
+            "hotelid": 1,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 8,
+            "hotelid": 1,
+            "name": "Restaurant",
+            "userInfo": null
+        }, {
+            "id": 3,
+            "hotelid": 1,
+            "name": "Housekeeping",
+            "userInfo": null
+        }, {
+            "id": 4,
+            "hotelid": 1,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 5,
+            "hotelid": 1,
+            "name": "Front Desk",
+            "userInfo": null
+        }, {
+            "id": 6,
+            "hotelid": 1,
+            "name": "Kitchen",
+            "userInfo": null
+        }, {
+            "id": 7,
+            "hotelid": 1,
+            "name": "Maintenance",
+            "userInfo": null
+        }, {
+            "id": 9,
+            "hotelid": 1,
+            "name": "Banquet",
+            "userInfo": null
+        }]
+    }, {
+        "id": 39,
+        "isAdmin": 0,
+        "name": "chen guanglei",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "后勤",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 2,
+            "name": "如家酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 10,
+            "hotelid": 2,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 11,
+            "hotelid": 2,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 40,
+        "isAdmin": 0,
+        "name": "gao shun",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "客服部",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 1,
+            "name": "睡莲酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 1,
+            "hotelid": 1,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 2,
+            "hotelid": 1,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 41,
+        "isAdmin": 0,
+        "name": "wang wei",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "客服部",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 2,
+            "name": "如家酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 10,
+            "hotelid": 2,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 11,
+            "hotelid": 2,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 42,
+        "isAdmin": 0,
+        "name": "dd song",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "manager",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }, {
+            "id": 5,
+            "name": "THotelB",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 20,
+            "hotelid": 3,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 37,
+            "hotelid": 5,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 38,
+            "hotelid": 5,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }, {
+            "id": 74,
+            "hotelid": 3,
+            "name": "测试",
+            "userInfo": null
+        }]
+    }, {
+        "id": 43,
+        "isAdmin": 0,
+        "name": "ha0001 ha0001",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0001",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 44,
+        "isAdmin": 0,
+        "name": "ha0002 ha0002",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0002",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 20,
+            "hotelid": 3,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 45,
+        "isAdmin": 0,
+        "name": "ha0003 ha0003",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0003",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 20,
+            "hotelid": 3,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 46,
+        "isAdmin": 0,
+        "name": "ha0004 ha0004",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0004",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 47,
+        "isAdmin": 0,
+        "name": "ha0005 ha0005",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0005",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 20,
+            "hotelid": 3,
+            "name": "Manager Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 48,
+        "isAdmin": 0,
+        "name": "Xin Chen",
+        "phone": "2165465231",
+        "mail": "",
+        "account": "ucxtest1",
+        "face": "",
+        "position": "254568",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 33,
+            "hotelid": 4,
+            "name": "Kitchen",
+            "userInfo": null
+        }, {
+            "id": 32,
+            "hotelid": 4,
+            "name": "Front Desk",
+            "userInfo": null
+        }, {
+            "id": 31,
+            "hotelid": 4,
+            "name": "Bell Staff",
+            "userInfo": null
+        }]
+    }, {
+        "id": 49,
+        "isAdmin": 0,
+        "name": "ha0006 ha0006",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "ha0006",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 50,
+        "isAdmin": 0,
+        "name": "haihua shun",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "值班",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 1,
+            "name": "睡莲酒店",
+            "status": 1,
+            "timezone": "Asia/Irkutsk",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 1,
+            "hotelid": 1,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 51,
+        "isAdmin": 0,
+        "name": "dd song",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "职员",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 27,
+            "hotelid": 3,
+            "name": "Banquet",
+            "userInfo": null
+        }, {
+            "id": 22,
+            "hotelid": 3,
+            "name": "Bell Staff",
+            "userInfo": null
+        }, {
+            "id": 26,
+            "hotelid": 3,
+            "name": "Restaurant",
+            "userInfo": null
+        }]
+    }, {
+        "id": 52,
+        "isAdmin": 0,
+        "name": "Chen Li",
+        "phone": "",
+        "mail": "",
+        "account": "ucxtest6",
+        "face": "",
+        "position": "562456",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 33,
+            "hotelid": 4,
+            "name": "Kitchen",
+            "userInfo": null
+        }, {
+            "id": 32,
+            "hotelid": 4,
+            "name": "Front Desk",
+            "userInfo": null
+        }, {
+            "id": 31,
+            "hotelid": 4,
+            "name": "Bell Staff",
+            "userInfo": null
+        }]
+    }, {
+        "id": 53,
+        "isAdmin": 0,
+        "name": "Chen Wang",
+        "phone": "",
+        "mail": "",
+        "account": "ucxtest7",
+        "face": "",
+        "position": "56989",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 33,
+            "hotelid": 4,
+            "name": "Kitchen",
+            "userInfo": null
+        }, {
+            "id": 32,
+            "hotelid": 4,
+            "name": "Front Desk",
+            "userInfo": null
+        }, {
+            "id": 31,
+            "hotelid": 4,
+            "name": "Bell Staff",
+            "userInfo": null
+        }]
+    }, {
+        "id": 54,
+        "isAdmin": 0,
+        "name": "Sh Tian",
+        "phone": "",
+        "mail": "",
+        "account": "ucxtest8",
+        "face": "",
+        "position": "545665",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 34,
+            "hotelid": 4,
+            "name": "Maintenance",
+            "userInfo": null
+        }]
+    }, {
+        "id": 55,
+        "isAdmin": 0,
+        "name": "P Jin",
+        "phone": "",
+        "mail": "",
+        "account": "ucxtest9",
+        "face": "",
+        "position": "132456546",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 34,
+            "hotelid": 4,
+            "name": "Maintenance",
+            "userInfo": null
+        }]
+    }, {
+        "id": 56,
+        "isAdmin": 0,
+        "name": "T Xin",
+        "phone": "",
+        "mail": "",
+        "account": "ucxtest10",
+        "face": "",
+        "position": "jkj",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 34,
+            "hotelid": 4,
+            "name": "Maintenance",
+            "userInfo": null
+        }]
+    }, {
+        "id": 57,
+        "isAdmin": 0,
+        "name": "1 2",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "sdfs ",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 58,
+        "isAdmin": 0,
+        "name": "111 222",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "职员",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 19,
+            "hotelid": 3,
+            "name": "MOD Schedule",
+            "userInfo": null
+        }]
+    }, {
+        "id": 59,
+        "isAdmin": 0,
+        "name": "111 333",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "kitchen",
+        "remark": null,
+        "status": 1,
+        "hotels": [{
+            "id": 3,
+            "name": "THotelA",
+            "status": 1,
+            "timezone": "America/Vancouver",
+            "userInfo": null
+        }],
+        "departments": [{
+            "id": 24,
+            "hotelid": 3,
+            "name": "Kitchen",
+            "userInfo": null
+        }]
+    }]
+}
