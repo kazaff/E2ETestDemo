@@ -1,0 +1,183 @@
+{
+    "departments": [{
+        "id": 1,
+        "hotelid": 1,
+        "name": "MOD Scheduler",
+        "code": "",
+        "remark": null,
+        "people": 1,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 1
+    }, {
+        "id": 2,
+        "hotelid": 1,
+        "name": "Manager Scheduler",
+        "code": "",
+        "remark": null,
+        "people": 1,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 2
+    }, {
+        "id": 3,
+        "hotelid": 1,
+        "name": "Housekeeping",
+        "code": "",
+        "remark": null,
+        "people": 1,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 3
+    }, {
+        "id": 4,
+        "hotelid": 1,
+        "name": "Bell Staff",
+        "code": "",
+        "remark": null,
+        "people": 0,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 4
+    }, {
+        "id": 5,
+        "hotelid": 1,
+        "name": "Front Desk",
+        "code": "",
+        "remark": null,
+        "people": 11,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 5
+    }, {
+        "id": 6,
+        "hotelid": 1,
+        "name": "Kitchen",
+        "code": "",
+        "remark": null,
+        "people": 0,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 6
+    }, {
+        "id": 7,
+        "hotelid": 1,
+        "name": "Maintenance",
+        "code": "",
+        "remark": null,
+        "people": 1,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 7
+    }, {
+        "id": 8,
+        "hotelid": 1,
+        "name": "Restaurant",
+        "code": "",
+        "remark": null,
+        "people": 0,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 8
+    }, {
+        "id": 9,
+        "hotelid": 1,
+        "name": "Banquet",
+        "code": "",
+        "remark": null,
+        "people": 0,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 9
+    }, {
+        "id": 19,
+        "hotelid": 1,
+        "name": "Manager",
+        "code": "",
+        "remark": null,
+        "people": 11,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 0
+    }, {
+        "id": 25,
+        "hotelid": 1,
+        "name": "A&G",
+        "code": "",
+        "remark": null,
+        "people": 1,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 0
+    }, {
+        "id": 26,
+        "hotelid": 1,
+        "name": "F&B",
+        "code": "",
+        "remark": null,
+        "people": 4,
+        "hotel": {
+            "id": 1,
+            "name": "Hilton Hasbrouck Heights",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 0
+    }]
+}

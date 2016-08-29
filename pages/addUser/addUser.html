@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title data-language="label_commonTitle" class="fwLanguage">Add User Demo</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+		<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../assets/select2/css/select2.min.css" />
+		<link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../assets/css/ionicons.min.css" />
+		<link href="../../assets/switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../assets/css/fw.css" />
+		<link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css" />
+		<link rel="stylesheet" href="../../assets/dist/css/skins/skin-blue.min.css" />
+		<!--input file button -->
+		<link href="../../assets/css/a-upload.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../assets/iCheck/all.css">
+		<link rel="stylesheet" href="../../assets/animate/animate.css" />
+		<!--[if lt IE 9]>
+    <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+		<style type="text/css">
+			.fw_selectItem .SStitle {
+				font-family: 宋体;
+				display: block;
+				height: 30px;
+				line-height: 30px;
+				font-size: 14px;
+				color: rgb(102, 102, 102);
+				margin: 7px 0px 0px 20px;
+			}
+
+			.fw_selectItem .border6e {
+				border: 1px solid #d2d6de;
+			}
+
+			.fw_selectItem .bo_a9 {
+				border: solid 1px #d2d6de;
+			}
+
+			.fw_selectItem .height_30 {
+				height: 30px;
+			}
+
+			.fw_selectItem .inline_block {
+				display: inline-block;
+			}
+
+			.fw_selectItem .line_height_30 {
+				line-height: 30px;
+			}
+
+			.fw_selectItem .bg_blue {
+				background-color: #EEE;
+				color: #000;
+			}
+
+			.fw_selectItem .inline_block {
+				display: inline-block;
+			}
+
+			.fw_selectItem .selected_item {
+				width: 100%;
+				text-align: center;
+				color: #000;
+				background: #3c8dbc;
+				color: #fff;
+				font-size: 14px;
+				position: relative;
+			}
+
+			.fw_selectItem .delete {
+				position: absolute;
+				width: 15px;
+				height: 15px;
+				background-image: url(../../assets/css/images/ico19.png);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				top: 7px;
+				right: 5px;
+				cursor: pointer;
+			}
+
+			.fw_selectItem .addPic {
+				background-image: url(../../assets/css/images/ico19.png);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				width: 30px;
+				height: 30px;
+				vertical-align: middle;
+				cursor: pointer;
+			}
+
+			.fw_selectItem .groupList {
+				position: relative;
+				display: none;
+				width: 100%;
+			}
+
+			.fw_selectItem .bg_ff {
+				background-color: #FFF !important;
+				background-color: #FFF;
+			}
+
+			.fw_selectItem ul,
+			menu,
+			dir {
+				display: block;
+				list-style-type: disc;
+				-webkit-margin-before: 1em;
+				-webkit-margin-after: 1em;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+				-webkit-padding-start: 40px;
+			}
+
+			.fw_selectItem .groupList ul li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				cursor: pointer;
+			}
+
+			.fw_selectItem .close {
+				cursor: pointer;
+				width: 10px;
+				height: 10px;
+				background-image: url(../../assets/css/images/ico24.png);
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+			}
+
+			.departmentDiv {
+				/*display: none;*/
+			}
+		</style>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<!-- Main Header -->
+			<header class="main-header">
+				<!-- Logo -->
+				<a href="index2.html" class="logo">
+					<!-- mini logo for sidebar mini 50x50 pixels --><span class="logo-mini"><b>A</b>LT</span>
+					<!-- logo for regular state and mobile devices --><span class="logo-lg"><b>Admin</b>LTE</span> </a>
+				<!-- Header Navbar -->
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-left:0">
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<!-- User Account Menu -->
+							<li class="dropdown user user-menu">
+								<!-- Menu Toggle Button -->
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<!-- The user image in the navbar--><img src="" class="user-image" alt="User Image" />
+									<!-- hidden-xs hides the username on small devices so only the image appears. --><span class="hidden-xs"></span> </a>
+								<ul class="dropdown-menu">
+									<!-- The user image in the menu -->
+									<li class="user-header" id="btn_header_account">
+										<img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+									</li>
+									<!-- Menu Footer-->
+									<li class="user-footer">
+										<div class="pull-right">
+											<a id="btn_header_account_signout" class="btn btn-default btn-flat">Sign out</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper" style="margin-left:0">
+				<!-- Main content -->
+				<section class="content">
+					<div class="row animated fadeInRight">
+						<div class="col-xs-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">user create</h3>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="col-xs-7">
+											<form id="form_user" class="form-horizontal" enctype="multipart/form-data" onsubmit="return false;">
+												<div class="row" style="position: relative;">
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="user_account" class="control-label col-xs-3" >
+																<span style="color:red;" class="control-label">*</span>
+																<span>account</span>
+                              </label>
+															<div class="col-xs-6">
+																<input id="user_account" class="form-control" maxlength="255" type="text" name="account" placeholder="input account" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_name" class="control-label col-xs-3">
+																<span style="color:red;" class="control-label">*</span>
+																<span>first name</span>
+															</label>
+															<div class="col-xs-6">
+																<input id="first_name" class="form-control" type="text" placeholder="input name" maxlength="100" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_name" class="control-label col-xs-3">
+																<span style="color:red;" class="control-label">*</span>
+																<span>last name</span>
+															</label>
+															<div class="col-xs-6">
+																<input id="last_name" class="form-control" type="text" placeholder="input name" maxlength="100" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_mail" class="control-label col-xs-3">
+																<span>mail</span>
+															</label>
+															<div class="col-xs-6">
+																<input id="user_mail" class="form-control" type="text" name="mail" placeholder="input mail" maxlength="255" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_position" class="control-label col-xs-3">
+																<span style="color:red;" class="control-label">*</span>
+																<span>position</span>
+															</label>
+															<div class="col-xs-6">
+																<input id="user_position" class="form-control" type="text" name="position" placeholder="input position" maxlength="255" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_phone" class="control-label col-xs-3">
+																<span>phone</span>
+															</label>
+															<div class="col-xs-6">
+																<input id="user_phone" class="form-control" type="text" name="phone" placeholder="input phone" maxlength="50" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label for="user_hotel" class="control-label col-xs-3">
+																<span style="color:red;" class="control-label">*</span>
+																<span>hotel</span>
+															</label>
+															<div class="col-xs-6">
+																<button id="addHotel" type="button" class="btn btn-block btn-info btn-sm">Add Hotel</button>
+															</div>
+														</div>
+														<div id="selectHotel">
+														</div>
+														<div class="form-group departmentMain" style="display: none;">
+															<label for="user_hotel" class="control-label col-xs-3">department</label>
+															<div class="col-xs-6">
+																<button id="addDepartment" type="button" class="btn btn-block btn-info btn-sm ">Add Department</button>
+															</div>
+														</div>
+														<div class="departmentMain" id="selectDepartment" style="display: none;">
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-xs-12">
+														<div class="form-group">
+															<label for="user_remark" class="control-label col-xs-3">remark：</label>
+															<div class="col-xs-9">
+																<textarea id="user_remark" name="remark" class="form-control" rows="3" maxlength="200"></textarea>
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="col-xs-5">
+											<from id="face_form" enctype="multipart/form-data">
+												<div class="pull-left" style="text-align: center;">
+													<div>
+														<img id="user_face_img" src="" class="img-responsive" style="width:150px;height:150px;border:1px solid #d2d6de;margin: 5px;"></img>
+													</div>
+													<div class="">
+														<a href="javascript:void(0);" class="a-upload" style="margin: auto;">
+															<input type="file" name="face" id="btn_basic_userCreate_uploadFace"></input>
+															<span id="upload_text">upload face</span>
+														</a>
+													</div>
+												</div>
+											</from>
+										</div>
+									</div>
+								</div>
+								<div class="box-footer clearfix">
+									<div class="row">
+										<div class="col-xs-1"></div>
+										<div class="btn-toolbar form-group col-xs-6" role="toolbar">
+											<div class="btn-group col-xs-6">
+												<button id="btn_basic_userCreate_save" style="display:block;" type="button" class="btn btn-primary">save</button>
+												<button id="btn_basic_userCreate_cancel" class="btn btn-info pull-right">cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- /.content -->
+			</div>
+			<!-- /.content-wrapper -->
+			<!-- Main Footer -->
+			<footer class="main-footer" style="margin-left:0">
+				<!-- To the right -->
+				<div class="pull-right hidden-xs">
+					Anything you want
+				</div>
+				<!-- Default to the left -->
+				<strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+			</footer>
+			<!-- Control Sidebar -->
+			<div class="control-sidebar-bg"></div>
+		</div>
+		<!-- ./wrapper -->
+		<!-- REQUIRED JS SCRIPTS -->
+		<script src="../../assets/js/lodash.js"></script>
+		<!-- jQuery 2.1.4 -->
+		<script src="../../assets/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../assets/jQuery/jquery.tmpl.js"></script>
+		<script src="../../assets/layer/layer.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../assets/select2/js/select2.full.min.js"></script>
+		<script src="../../assets/validator/bootstrapValidator.js"></script>
+		<!-- iCheck-->
+		<script src="../../assets/iCheck/icheck.min.js"></script>
+
+		<!-- AdminLTE App -->
+		<script src="../../assets/dist/js/app.min.js"></script>
+		<script type="text/javascript">
+
+			window.no_ZH_CN = function no_ZH_CN(obj) {
+				obj.value = obj.value.replace(/[\u4E00-\u9FA5]/g, "");
+			};
+
+			window.onlyNumber = function onlyNumber(obj) {
+				obj.value = obj.value.replace(/[^\d]/g, '');
+			};
+
+			window.onlyTwo = function onlyTwo(obj) {
+				//先把非数字的都替换掉，除了数字和.
+				obj.value = obj.value.replace(/[^\d.]/g, "");
+				//必须保证第一个为数字而不是.
+				obj.value = obj.value.replace(/^\./g, "");
+				//保证只有出现一个.而没有多个.
+				obj.value = obj.value.replace(/\.{2,}/g, ".");
+				//保证.只出现一次，而不能出现两次以上
+				obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+				//保证.只后面只能出现两位有效数字
+				obj.value = obj.value.replace(/([0-9]+\.[0-9]{2})[0-9]*/, "$1");
+				//小数点前面是6位
+				if(obj.value >= 1000000) {
+					obj.value = obj.value.replace(obj.value, "");
+					layer.msg($.i18n.prop('input_cleaner_hourly'));
+				}
+			};
+
+			window.makeRestUrl = (function() {
+				var restRE = /\/:(\w+)/g;
+				var replaceRESTParams = function(endpoint, params) {
+					return endpoint.replace(restRE, function(match, key) {
+						var value = params[key];
+						return "/" + ((value !== undefined) ? encodeURIComponent(value) : (":" + key));
+					});
+				};
+				return function(endpoint, params) {
+					//处理query数据
+					var endpointParams = [];
+					var result;
+					while(result = restRE.exec(endpoint)) {
+						endpointParams.push(result[1]);
+					}
+					var query = {};
+					Object.keys(params).forEach(function(key) {
+						if(endpointParams.indexOf(key) < 0) {
+							query[key] = params[key];
+						}
+					});
+					//处理endpoint中的变量
+					var url = replaceRESTParams(endpoint, params);
+					//处理query参数
+					var queryStr = "";
+					_.forIn(query, function(value, key) {
+						queryStr += encodeURIComponent(key) + "=" + encodeURIComponent(value) + "&"
+					});
+					return url + (queryStr === "" ? "" : ("?" + queryStr.substr(0, queryStr.length - 1)));
+				}
+			}());
+
+			//本页信息
+			var pageJsonMap = {};
+			pageJsonMap.size = 10; //列表的长度暂定为10，
+			pageJsonMap.defaultImg = "../../assets/css/images/defaultHead.png";
+			pageJsonMap.zonggongsi = {
+				id: '0',
+				text: 'zonggongsi'
+			};
+			pageJsonMap.requireFeilds = ['account', 'first_name','last_name', 'hotel', 'department', 'position'];
+			pageJsonMap.defaultImg = "../../assets/css/images/defaultHead.png";
+			pageJsonMap.hotelNum=0;//新增酒店时使用
+			pageJsonMap.departmentNum=0;//新增部门时候使用
+			pageJsonMap.hotelList=[];//查询过的酒店
+
+			$(function() {
+				$(document).on("click", "#btn_basic_userCreate_save", form_submite);
+				$(document).on("click", "#btn_basic_userCreate_cancel", form_cancel);
+				$(document).on("blur", "#user_account", checkAccount);
+				$(document).on("input propertychange","#user_account",function(){
+					no_ZH_CN(this);
+				});
+				$(document).on("input propertychange","#user_phone",function(){
+					onlyNumber(this);
+				});
+				$(document).on("input propertychange",".hourly",function(){
+					onlyTwo(this);
+				});
+				$(document).on("click","#addHotel",addHotel);
+				$(document).on("click","#addDepartment",function(){
+					//新增部门操作
+					hotelLoadDepartments(1);
+				});
+				$(document).on("change",".myHotel",function(){
+					changeHotel(this);
+				});
+				$(document).on("click",".delateHotel",delateHotel);
+				$(document).on("change",".allDepartment",changeDepartment);
+				$(document).on("click",".delateDepartment",delateDepartment);
+				$(document).on("ifChecked",".mycheckbox",checkedCheckbox);
+				$(document).on("ifUnchecked",".mycheckbox",uncheckedCheckbox);
+				$(document).on("blur",".codeId",function(){
+					checkUserCode(this);
+				});
+
+				initPage();
+				$(".select2").select2();
+			});
+
+			//页面初始化
+			function initPage() {
+				//当前用户
+				pageJsonMap.current = {
+				    "user": {
+				        "id": 1,
+				        "isAdmin": 1,
+				        "name": "Default Admin",
+				        "phone": "111111",
+				        "mail": "",
+				        "account": "adminTest",
+				        "password": "e1das0adcasd3a949b1ad59abdfbes56e012!@#1sd57f20f883e",
+				        "face": "",
+				        "position": "",
+				        "remark": "",
+				        "status": 1,
+				        "hotel": null,
+				        "department": null
+				    },
+				    "authKey": "e94fc417-45e4-48f5-a30e-550f07a8643e",
+				    "currentHotel": 1,
+				    "currentHotelName": "Hilton Hasbrouck Heights",
+				    "hotelHtml": "<option value='0'>Corporate Office</option><option selected=selected value=1>Hilton Hasbrouck Heights</option><option value=2>Crowne Plaza Edison</option>",
+				    "hotels": [{
+				        "id": 1,
+				        "status": 1,
+				        "firstday": 5,
+				        "name": "Hilton Hasbrouck Heights",
+				        "marketingNumber": "",
+				        "roomtotal": 355,
+				        "remark": null,
+				        "timezone": "EST",
+				        "rooms": [{
+				            "category": "Hasbrouck Room - 1 King",
+				            "number": 98
+				        }, {
+				            "category": "Hasbrouck Room - 2 Double",
+				            "number": 184
+				        }, {
+				            "category": "NYC Skyline View - 1 King",
+				            "number": 22
+				        }, {
+				            "category": "NYC Skyline View 2 - Double",
+				            "number": 27
+				        }, {
+				            "category": "1 King Accessible with Roll-in Shower",
+				            "number": 5
+				        }, {
+				            "category": "1 King Junior Suite Accessible with Roll-in Shower",
+				            "number": 1
+				        }, {
+				            "category": "2 Double Accessible with Bathtub",
+				            "number": 4
+				        }, {
+				            "category": "Junior Suite",
+				            "number": 10
+				        }, {
+				            "category": "NYC Skyline Suite",
+				            "number": 1
+				        }, {
+				            "category": "1 King City View Suite Accessible with Roll-in Shower",
+				            "number": 1
+				        }, {
+				            "category": "1 King Presidential Accessible with Roll-in Shower",
+				            "number": 1
+				        }, {
+				            "category": "Presidential Suite",
+				            "number": 1
+				        }],
+				        "brand": {
+				            "id": 1,
+				            "name": "Hilton",
+				            "parentid": 0,
+				            "remark": "",
+				            "isParent": null
+				        }
+				    }, {
+				        "id": 2,
+				        "status": 1,
+				        "firstday": 6,
+				        "name": "Crowne Plaza Edison",
+				        "marketingNumber": "",
+				        "roomtotal": 169,
+				        "remark": null,
+				        "timezone": "EST",
+				        "rooms": [{
+				            "category": "King Presidential Suite",
+				            "number": 2
+				        }, {
+				            "category": "King Junior Suite",
+				            "number": 3
+				        }, {
+				            "category": "King Executive",
+				            "number": 24
+				        }, {
+				            "category": "King Standard",
+				            "number": 63
+				        }, {
+				            "category": "King Handicup Tub",
+				            "number": 3
+				        }, {
+				            "category": "King Handicup Roll-in Shower",
+				            "number": 2
+				        }, {
+				            "category": "Doubles Standard",
+				            "number": 56
+				        }, {
+				            "category": "Doubles Handicup Tub",
+				            "number": 4
+				        }, {
+				            "category": "Doubles Executive",
+				            "number": 12
+				        }],
+				        "brand": {
+				            "id": 2,
+				            "name": "Intercontinental Hotel Group",
+				            "parentid": 0,
+				            "remark": "",
+				            "isParent": null
+				        }
+				    }]
+				};
+				//权限设置
+				pageJsonMap.btn_basic_userCreate = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "btn_basic_userCreate",
+					link_id: 260,
+					link_url: "addUser.json",
+					order: 3,
+					service_id: 260
+				};
+				pageJsonMap.btn_basic_userCreate_searchDepartment = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "btn_basic_userCreate_searchDepartment",
+					link_id: 305,
+					link_url: "departments.json",
+					order: 3,
+					service_id: 23
+				};
+				pageJsonMap.btn_basic_userCreate_uploadFace =  {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "btn_basic_userCreate_uploadFace",
+					link_id: 261,
+					link_url: "face.json",
+					order: 9,
+					service_id: 261
+				};
+				pageJsonMap.btn_basic_userCreate_checkAccount = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "btn_basic_userCreate_checkAccount",
+					link_id: 262,
+					link_url: "checkAccount.json",
+					order: 9,
+					service_id: 262
+				};
+				pageJsonMap.btn_basic_userCreate_checkCancel = {
+					className: "fa fa-circle-o",
+					dir_id: 2,
+					isDir: false,
+					key: "menu_basic_user",
+					link_id: 21,
+					link_url: "",
+					order: 2,
+					service_id: 15
+				};
+				pageJsonMap.checkUserCode = {
+					className: "fa fa-circle-o",
+					isDir: false,
+					key: "checkUserCode",
+					link_id: "checkUserCode",
+					link_url: "code.json",
+					order: 3,
+				};
+
+				//上传头像事件
+				$(document).on("change", "#" + pageJsonMap.btn_basic_userCreate_uploadFace.key, uploadFace);
+				$(".a-upload").css('display', 'none');
+
+				mockLogic(2, function() {
+					form_init();
+				});
+			}
+
+			function mockLogic(waitTime, callback) {
+				setTimeout(callback, waitTime * 1000);
+			}
+
+			//酒店改变
+			function changeHotel(e) {
+				//判断部门显示
+				showDepartment(e);
+				//筛选出来，改变的是哪个酒店，获取变更前的酒店id和变更后的酒店id
+				var nowHotels = $(".myHotel");
+				var beforeHotel;
+				var selectHotels=[];//已经选择的酒店id list
+				for(var i=0;i<nowHotels.length;i++){
+					selectHotels.push($(nowHotels[i]).val());
+				}
+				//筛选变更前的酒店
+				var temList=[];
+				for(var i=0;i<pageJsonMap.hotelList.length;i++){
+					if(selectHotels.indexOf(pageJsonMap.hotelList[i]) == -1){
+						beforeHotel = pageJsonMap.hotelList[i];
+					}
+					else{
+						temList.push(pageJsonMap.hotelList[i]);
+					}
+				}
+				//更新已经查询过的酒店id记录
+				pageJsonMap.hotelList = temList;
+
+				if(beforeHotel!=undefined){
+					//移除酒店下对应的部门
+					$(".departmentPar"+beforeHotel).remove();
+					$(".allDepartment ").find("option[data-hotelid="+beforeHotel+"]").remove();
+				}
+				//更新部门数据
+				hotelLoadDepartments();
+			}
+
+			//删除酒店
+			function delateHotel(){
+				//删除的酒店id
+				var delateHotelId = $(this).parent().parent().find('select').val();
+				$(this).parent().parent().remove();
+
+				//判断部门显示
+				showDepartment();
+
+				//筛选酒店，查询过的酒店和页面上选择的酒店同步
+				var nowHotels = $(".myHotel");
+				var selectHotels=[];//已经选择的酒店id list
+				for(var i=0;i<nowHotels.length;i++){
+					selectHotels.push($(nowHotels[i]).val());
+				}
+				var temList=[];
+				for(var i=0;i<pageJsonMap.hotelList.length;i++){
+					if(selectHotels.indexOf(pageJsonMap.hotelList[i]) != -1){
+						temList.push(pageJsonMap.hotelList[i]);
+					}
+				}
+				pageJsonMap.hotelList = temList;
+
+				//判断删除的酒店，如果不在在已经查询的列表中，部门相关数据进行移除操作
+				if(pageJsonMap.hotelList.indexOf(delateHotelId.toString()) == -1){
+					//移除酒店下对应的部门
+					$(".departmentPar"+delateHotelId).remove();
+					$(".allDepartment ").find("option[data-hotelid="+delateHotelId+"]").remove();
+				}
+			}
+
+			function checkAccount() {
+				var content = $('#user_account').val();
+				if (!content) {
+					var notempty_tip = "notEmpty";
+					layer.msg(notempty_tip);
+					return;
+				}
+				else if(parseInt(content.length)<6){
+					layer.msg("accoutLength");
+					return;
+				}
+
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.btn_basic_userCreate_checkAccount.link_url,
+					data: {
+							account: content
+					}
+				}).done(function(data) {
+					layer.closeAll();
+					if (data.status == '1') {
+						var exite_tip = "exit";
+						layer.msg(exite_tip);
+						$("#btn_basic_userCreate_save").attr("disabled",true)
+					} else {
+						$("#btn_basic_userCreate_save").attr("disabled",false)
+					}
+				});
+				return false;
+			}
+
+			function uploadFace() {
+				var formData = new FormData();
+				formData.append("face", this.files[0]);
+
+				$.ajax({
+					url: makeRestUrl(pageJsonMap.btn_basic_userCreate_uploadFace.link_url, {
+						id: pageJsonMap.requestObj.id
+					}),
+					type: 'POST',
+					data: formData,
+					async: false,
+					cache: false,
+					contentType: false,
+					crossDomain: true,
+					timeout: 5000,
+					beforeSend: function(XMLHttpRequest) {
+						XMLHttpRequest.setRequestHeader("x-auth-token", pageJsonMap.current.authKey);
+						$("#loading").show();
+					},
+					processData: false,
+					success: function(data) {
+						$('#user_face_img').css('border', '2px solid green');
+						$('#user_face_img').attr('src', data.url);
+
+						var success_tip = "success";
+						layer.msg(success_tip + '！');
+						$('#btn_basic_userCreate_save').attr('disabled', 'disabled');
+					},
+					error: function(obj) {}
+				});
+			}
+
+			//初始化表单
+			function form_init() {
+				$('#user_face_img').attr('src', pageJsonMap.defaultImg);
+			}
+
+			//添加酒店
+			function addHotel(){
+				pageJsonMap.hotelNum++;
+				var hotelHtml = '<div class="form-group" style="position: relative;">'+
+									'<div class="control-label col-xs-3 fwLanguage" style="padding-top: 2px;">'+
+										'<button type="button" class="fa fa-trash-o btn btn-danger delateHotel"></button>'+
+									'</div>'+
+									'<div class="col-xs-6">'+
+										'<select class="form-control myHotel fwLanguage select2 hotelSelect'+pageJsonMap.hotelNum+'"></select>'+
+									'</div>'+
+									'<div class="" style="width:100%;position: absolute;left: 73%;top: 0px;">'+
+										'<label style="position: absolute;left: 75%;padding-top: 5px;">'+
+											'<input type="checkbox" class="flat-red mycheckbox" style="position: absolute; opacity: 0;">'+
+											'<span style="color:#000;padding-left:5px">ignore</span>'+
+										'</label>'+
+										'<label class="control-label" style="float: left;color:#000;padding-top:0px;width:25%;display:inline-block;padding-top: 5px;">machine_ID</label>'+
+										'<div class="col-xs-6" style="display: inline-block;">'+
+											'<input class="form-control codeId" type="text" placeholder="conmon_codeId" maxlength="10" />'+
+										'</div>'+
+									'</div>'+
+								'</div>';
+				$("#selectHotel").append(hotelHtml);
+				//select 酒店数据
+				var selectHotelHtml = '<option value='+pageJsonMap.zonggongsi.id+'>'+pageJsonMap.zonggongsi.text+'</option>';
+				for (var i = 0; i < pageJsonMap.current.hotels.length; i++) {
+					if(pageJsonMap.current.hotels[i].status == 1){
+						if(i == 0){
+							selectHotelHtml += '<option value='+ pageJsonMap.current.hotels[i].id +' selected=selectd>' + pageJsonMap.current.hotels[i].name + '</option>';
+						}
+						else{
+							selectHotelHtml += '<option value='+ pageJsonMap.current.hotels[i].id +'>' + pageJsonMap.current.hotels[i].name + '</option>';
+						}
+					}
+				}
+				$(".hotelSelect"+pageJsonMap.hotelNum).html(selectHotelHtml);
+				$(".select2").select2();
+				//初始化icheck
+				$(document).find('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+		      		checkboxClass: 'icheckbox_flat-green',
+				    radioClass: 'iradio_flat-green'
+				});
+				showDepartment();
+
+				//更新酒店部门信息
+				hotelLoadDepartments();
+			}
+
+			//判断部门部分是否显示
+			function showDepartment(e){
+				//选择总公司，其他的酒店都需要移除
+				if(e!=undefined){
+					var temHotels = $(".myHotel");
+					if($(e).val() == 0){
+						for(var i=0;i<temHotels.length;i++){
+							if($(temHotels[i]).val() != 0){
+								$(temHotels[i]).parent().parent().remove();
+							}
+						}
+						//选择总公司后，禁止新增酒店
+						$("#addHotel").attr("disabled","disabled");
+					}
+					else{
+						$("#addHotel").removeAttr("disabled");
+					}
+				}
+				var hotels = $(".myHotel");
+				//没有选择酒店
+				if(hotels.length == 0){
+					$(".departmentMain").css("display","none");
+					$("#addHotel").removeAttr("disabled");
+				}
+				else if(hotels.length == 1){
+					var nowId = $(hotels[0]).val();
+					//选择为总公司
+					if(nowId == 0){
+						$(".departmentMain").css("display","none");
+					}
+					else{
+						$(".departmentMain").css("display","block");
+					}
+				}
+				else{
+					$(".departmentMain").css("display","block");
+				}
+			}
+
+			//变更部门操作
+			function changeDepartment(){
+				var departId = $(this).val();
+				var hotelId = $(this).find("option[value="+departId+"]").attr("data-hotelid");
+				$(this).parent().parent().removeClass().addClass("form-group").addClass("departmentPar"+hotelId);
+				$(this).parent().parent().attr("data-hotelid",hotelId);
+				//input radio button
+				var radioBtn = $(this).parent().parent().find(".flat-red");
+				$(radioBtn).attr("name","name"+hotelId);
+				$(radioBtn).removeClass().addClass("flat-red").addClass("myRadio").addClass("radioBtn"+hotelId);
+				$(radioBtn).attr("data-id",hotelId);
+				$(radioBtn).iCheck('uncheck');
+			}
+
+			//删除部门操作
+			function delateDepartment(){
+				$(this).parent().parent().remove();
+			}
+
+			//checkbox 选中
+			function checkedCheckbox(){
+				$(this).parent().parent().parent().find('.codeId').attr("disabled","disabled");
+				$(this).parent().parent().parent().find('.codeId').attr("data-type",1);//data-type：1，不需要填写打卡机编号
+				$(this).parent().parent().parent().find('.codeId').val("");
+			}
+
+			//移除选中
+			function uncheckedCheckbox(){
+				$(this).parent().parent().parent().find('.codeId').removeAttr("disabled");
+				$(this).parent().parent().parent().find('.codeId').attr("data-type",0);//data-type：0，需要填写打卡机编号
+			}
+
+			/**
+			 * 增加和删除都要，动态加载部门
+			 * 总公司部门清空
+			 * **/
+			function hotelLoadDepartments(e) {
+				//判断是新增部门还是改变酒店变更部门操作；e：1，酒店新增部门操作
+				if(e == 1){
+					pageJsonMap.departmentNum++;
+					var departmentHtml = '<div class="form-group" style="position: relative;">'+
+											'<div class="control-label col-xs-3 fwLanguage" style="padding-top: 2px;" data-language="">'+
+												'<button type="button" class="fa fa-trash-o btn btn-danger delateDepartment"></button>'+
+											'</div>'+
+											'<div class="col-xs-6">'+
+												'<select class="form-control allDepartment select2 departmant'+pageJsonMap.departmentNum+'"></select>'+
+											'</div>'+
+											'<div class="" style="width:100%;position: absolute;left: 73%;top: 0px;">'+
+												'<label style="position: absolute;left: 75%;padding-top: 5px;">'+
+													'<input type="radio" class="flat-red myRadio" style="position: absolute; opacity: 0;">'+
+													'<span style="color:#000;padding-left:5px">basic_sectors</span>'+
+												'</label>'+
+												'<label class="control-label" style="float: left;color:#000;padding-top:0px;width:25%;display:inline-block;padding-top: 5px;">hourly</label>'+
+												'<div class="col-xs-6" style="display: inline-block;">'+
+													'<input class="form-control hourly" type="text" placeholder="hourly" maxlength="100"/>'+
+												'</div>'+
+											'</div>'+
+										'</div>';
+					$("#selectDepartment").append(departmentHtml);
+				}
+				//获取页面上所选酒店id
+				var departments_arr = $(".myHotel");
+				//ajax 加载部门
+				if (departments_arr.length > 0) {
+					var hotelids_str = '';
+					for (var i = 0; i < departments_arr.length; i++) {
+						var hotel_value = $(departments_arr[i]).val();
+						if (hotel_value != pageJsonMap.zonggongsi.id){
+							hotelids_str += hotel_value + ',';
+						}
+					}
+					hotelids_str = hotelids_str.substring(0, hotelids_str.length - 1);
+
+					$.ajax({
+						type: 'GET',
+						url: pageJsonMap.btn_basic_userCreate_searchDepartment.link_url,
+						data: {
+							hotelids: hotelids_str
+						}
+					}).done(function(obj) {
+						//对于已经显示数据的select 进行筛选，把已经查询出来的酒店数据筛选掉
+						var contente_html = '';
+						for (var i = 0; i < obj.departments.length; i++) {
+							if(pageJsonMap.hotelList.indexOf(obj.departments[i].hotelid.toString()) == -1){
+								var hotel_name = '';
+								for (var j = 0; j < pageJsonMap.current.hotels.length; j++) {
+									if (obj.departments[i].hotelid == pageJsonMap.current.hotels[j].id) hotel_name = pageJsonMap.current.hotels[j].name;
+								}
+								contente_html += '<option data-hotelid="' + obj.departments[i].hotelid + '"value="' + obj.departments[i].id + '">' + hotel_name + '--' + obj.departments[i].name + '</option>';
+							}
+						}
+						//所有部门的select进行添加酒店部门操作
+						$(".allDepartment").append(contente_html);
+
+						//e:1 是新增操作
+						if(e == 1){
+							//所有酒店下的部门信息
+							var newSelect = '';
+							for (var i = 0; i < obj.departments.length; i++) {
+								var hotel_name = '';
+								for (var j = 0; j < pageJsonMap.current.hotels.length; j++) {
+									if (obj.departments[i].hotelid == pageJsonMap.current.hotels[j].id) hotel_name = pageJsonMap.current.hotels[j].name;
+								}
+								//因为默认都是选择第一个，给整个酒店部门最外面标签添加酒店id，方便部门删除操作
+								if(i == 0){
+									$(".departmant"+pageJsonMap.departmentNum).parent().parent().attr("data-hotelId",obj.departments[i].hotelid);
+									$(".departmant"+pageJsonMap.departmentNum).parent().parent().addClass("departmentPar"+obj.departments[i].hotelid);
+									//input radio button
+									$(".departmant"+pageJsonMap.departmentNum).parent().parent().find(".flat-red").attr("name","name"+obj.departments[i].hotelid);
+									$(".departmant"+pageJsonMap.departmentNum).parent().parent().find(".flat-red").addClass("radioBtn"+obj.departments[i].hotelid);
+									$(".departmant"+pageJsonMap.departmentNum).parent().parent().find(".flat-red").attr("data-id",obj.departments[i].hotelid);
+								}
+
+								newSelect += '<option data-hotelid="' + obj.departments[i].hotelid + '"value="' + obj.departments[i].id + '">' + hotel_name + '--' + obj.departments[i].name + '</option>';
+							}
+							//新增的select把所有部门进行覆盖操作
+							$(".departmant"+pageJsonMap.departmentNum).html(newSelect);
+						}
+						$(".select2").select2();
+
+						//保存查询过的酒店id
+						var currentList = hotelids_str.split(',');
+						for(var i=0;i<currentList.length;i++){
+							//没有查询过该酒店，将id push到pageJsonMap.hotelList，同时记录下该酒店id
+							if(pageJsonMap.hotelList.indexOf(currentList[i]) == -1){
+								pageJsonMap.hotelList.push(currentList[i]);
+							}
+						}
+						//初始化icheck
+						$(document).find('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+									checkboxClass: 'icheckbox_flat-green',
+								radioClass: 'iradio_flat-green'
+						});
+					});
+				}
+			}
+
+			//检查打卡机编号是否重复
+			function checkUserCode(e){
+				//打卡机编号为空时候，点击不进行验证
+				if($(e).val() == ""){
+					return;
+				}
+
+				$.ajax({
+					type: 'GET',
+					url: makeRestUrl(pageJsonMap.checkUserCode.link_url,{
+						id:$(e).parent().parent().parent().find("select").val(),
+						uid:0
+					}),
+					data: {
+						code:$(e).val()
+					},
+				}).done(function(data) {
+					if(data.status == 1){
+						layer.msg($(e).val()+" exists");
+						$(e).attr("data-type","1");
+						$("#btn_basic_userEdite_save").attr('disabled',"disabled");
+					}
+					else{
+						$(e).attr("data-type","0");
+						//验证所有打卡机编号，是否没有重复的标记
+						var codeList = $(".codeId");
+						var sign=0;
+						for(var i=0;i<codeList.length;i++){
+							if($(codeList[i]).attr("data-type") == 1){
+								sign=1;
+							}
+						}
+
+						if(sign == 0){
+							$("#btn_basic_userEdite_save").removeAttr('disabled');
+						}
+					}
+				});
+			}
+
+
+			function form_submite(e) {
+				var account = $("#user_account").val();
+				if (!account) {
+					layer.msg("emptyAccount");
+					return;
+				}
+				var lastName = $("#last_name").val();
+				if(!lastName){
+					layer.msg("emptyUserLastName");
+					return;
+				}
+				var firstName = $("#first_name").val();
+				if(!firstName){
+					layer.msg("emptyUserFirstName");
+					return;
+				}
+				var userName = firstName+" "+lastName;
+
+				var position = $("#user_position").val();
+				if (!position) {
+					layer.msg("emptyPosition");
+					return;
+				}
+				var userPhone = $("#user_phone").val();
+				var email = $("#user_mail").val();
+				var strReg = /\w+[@]{1}\w+[.]\w+/;
+				if (email.search(strReg) == -1 && email) {
+					layer.msg("wrongEmail");
+					return;
+				}
+
+				var userObj = {};
+				userObj.account = account;
+				userObj.name = userName;
+				userObj.position = position;
+				userObj.phone = userPhone;
+				userObj.mail = email;
+				userObj.remark = $("#user_remark").val();
+
+				//酒店
+				var myselectHotels = $(".myHotel");
+				var temHotels=[];//判断酒店重复
+				var myHotels = [];
+				//筛选酒店重复
+				for(var i=0;i<myselectHotels.length;i++){
+					if(temHotels.indexOf($(myselectHotels[i]).val()) == -1){
+						temHotels.push($(myselectHotels[i]).val());
+					}
+					else{
+						layer.msg($(myselectHotels[i]).find("option:selected").text()+" choose not be repeated");
+						return;
+					}
+				}
+
+				//验证酒店数据
+				for(var i=0;i<myselectHotels.length;i++){
+					var hotelObj = {};
+					var codeId = $(myselectHotels[i]).parent().parent().find(".codeId").val();
+					var hotelId = $(myselectHotels[i]).val();
+
+					hotelObj.hotelid = hotelId;
+					//打卡机编号
+					var codeType = $(myselectHotels[i]).parent().parent().find(".codeId").attr("data-type");
+					if(codeType == 1){//表示点击忽略操作
+						hotelObj.code = "";
+					}
+					else{
+						if(!codeId||codeId == ""){
+							layer.msg($(myselectHotels[i]).find("option:selected").text()+" empty code");
+							return;
+						}
+						else{
+							hotelObj.code = codeId;
+						}
+					}
+					//基础部门，不包含总公司
+					if(hotelId !=0){
+						if($("input[name=name"+hotelId+"]:checked").length>0){
+							hotelObj.basicDid = $("input[name=name"+hotelId+"]:checked").parent().parent().parent().parent().find("select").val()
+						}
+						else{
+							layer.msg($(myselectHotels[i]).find("option:selected").text()+" empty basic sectors");
+							return;
+						}
+					}
+					else{
+						hotelObj.basicDid = 0;
+					}
+
+					myHotels.push(hotelObj);
+				}
+
+				//部门
+				var myselectDepartment = $(".allDepartment");
+				var temDepartments = [];//筛选重复部门
+				var mydepartments = [];
+				//筛选重复部门
+				for(var i=0;i<myselectDepartment.length;i++){
+					if(temDepartments.indexOf($(myselectDepartment[i]).val()) == -1){
+						temDepartments.push($(myselectDepartment[i]).val());
+					}
+					else{
+						layer.msg($(myselectDepartment[i]).find("option:selected").text()+" choose not be repeated");
+						return;
+					}
+				}
+				//获取部门数据
+				for(var i=0;i<myselectDepartment.length;i++){
+					var departmentObj={};
+					var departmentId = $(myselectDepartment[i]).val();
+					var hourly = $(myselectDepartment[i]).parent().parent().find(".hourly").val();
+					departmentObj.departmentid = departmentId;
+					if(hourly == ""){
+						departmentObj.hourpay = 0;
+					}
+					else{
+						departmentObj.hourpay = hourly;
+					}
+					mydepartments.push(departmentObj);
+				}
+
+				//选择总公司没有办法选择其他酒店，所以列表数据肯定只有一个
+				if($(myselectHotels[0]).val()!=0){
+					//选择酒店必须现在部门
+					for(var i=0;i<myselectHotels.length;i++){
+						if($(".departmentPar"+$(myselectHotels[i]).val()).length == 0){
+							layer.msg($(myselectHotels[i]).find("option:selected").text()+" empty sectors");
+							return;
+						}
+					}
+				}
+
+				userObj.hotels = myHotels;
+				userObj.departments = mydepartments;
+				//没有选择所属酒店
+				if(userObj.hotels.length == 0){
+					layer.msg("hotel empty");
+					return;
+				}
+
+				userObj.face = '';
+				$.ajax({
+					type: 'POST',
+					url: pageJsonMap.btn_basic_userCreate.link_url,
+					data: userObj,
+				}).done(function(obj) {
+					layer.closeAll();
+					pageJsonMap.requestObj = userObj;
+					pageJsonMap.requestObj.id = obj.id;
+					var _tip_success = "success";
+					layer.msg(_tip_success + '！');
+					$("#btn_basic_userCreate_save").attr("disabled",true);
+					//新的账号的id 存起来！！
+					$(".a-upload").css('display', 'block');
+				});
+			}
+
+			//取消
+			function form_cancel() {
+				self.location = document.referrer;
+			}
+
+		</script>
+		<script id="selectHotelTmpl" type="text/x-jquery-tmpl">
+			<div class="form-group" style="position: relative;">
+				<span class="control-label col-xs-3" style="padding-top: 2px;">
+					<button type="button" class="fa fa-trash-o btn btn-danger deleteOnePos"></button>
+				</span>
+				<div class="col-xs-6">
+					<select styel="width:100%" class="form-control select2 oneHotel">
+						{{each(i,hotel) hotels}}
+						<option value="{{= hotel.id}}">{{= hotel.name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="" style="width:100%;position: absolute;left: 73%;top: 0px;">
+					<label style="position: absolute;left: 75%;padding-top: 5px;">
+						<input type="checkbox" class="flat-red hulv" style="position: absolute; opacity: 0;">
+						<span style="color:#000;padding-right:5px">ignore</span>
+					</label>
+					<div class="posNumber">
+						<label for="codeId" class="control-label" style="float: left;color:#000;padding-top:0px;width:25%;display:inline-block;padding-top: 5px;">DakaNumber</label>
+						<div class="col-xs-6" style="display: inline-block;">
+							<input id="codeId" class="form-control" type="text" maxlength="10" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</script>
+		<script id="selectDeparmentTmpl" type="text/x-jquery-tmpl">
+			<div class="form-group" style="position: relative;">
+				<span class="control-label col-xs-3" style="padding-top: 2px;">
+					<button type="button" class="fa fa-trash-o btn btn-danger deleteOneDepartment"></button>
+				</span>
+				<div class="col-xs-6">
+					<select class="form-control select2 departmentSelect">
+						{{each(i,department) departments}}
+						<option value="{{= department.id}}">{{= department.name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="" style="width:100%;position: absolute;left: 73%;top: 0px;">
+					<label style="position: absolute;left: 75%;padding-top: 5px;">
+						<input type="radio"  class="flat-red" name="1" style="position: absolute; opacity: 0;">
+						<span style="color:#000;padding-right:5px">basic</span>
+					</label>
+					<label for="hourPay" class="control-label" style="float: left;color:#000;padding-top:0px;width:25%;display:inline-block;padding-top: 5px;">Hourly</label>
+					<div class="col-xs-6" style="display: inline-block;">
+						<input id="hourPay" class="form-control" type="text" oninput="onlyTwo(this)" />
+					</div>
+				</div>
+			</div>
+		</script>
+	</body>
+
+</html>
