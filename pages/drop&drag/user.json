@@ -1,0 +1,18 @@
+{
+		"id": 723,
+		"isAdmin": 0,
+		"name": "kazaff",
+		"phone": 123456,
+		"mail": "edisondik@163.com",
+		"account": null,
+		"face": "",
+		"position": "coder",
+		"remark": null,
+		"status": 1,
+		"department": [{
+				"id": 1,
+				"hotelid": 1,
+				"name": "IT",
+				"userInfo": null
+		}]
+}

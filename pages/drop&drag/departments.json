@@ -1,0 +1,18 @@
+{
+    "departments": [{
+        "id": 28,
+        "hotelid": 4,
+        "name": "MOD Schedule",
+        "code": "252627",
+        "remark": null,
+        "people": 0,
+        "hotel": {
+            "id": 4,
+            "name": "Hcxtest1",
+            "status": 1,
+            "timezone": "EST",
+            "userInfo": null
+        },
+        "feature": 1
+    }]
+}

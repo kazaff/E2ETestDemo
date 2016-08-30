@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>drop and drag demo</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+		<link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../assets/select2/css/select2.min.css" />
+		<link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../assets/css/ionicons.min.css" />
+		<link href="../../assets/switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../assets/css/fw.css" />
+		<!-- Theme style -->
+		<link rel="stylesheet" href="../../assets/dist/css/AdminLTE.min.css" />
+		<link rel="stylesheet" href="../../assets/dist/css/skins/skin-blue.min.css" />
+		<link rel="stylesheet" href="../../assets/fullCanlender/css/fullcalendar.min.css" />
+		<!--<link rel="stylesheet" href="../../assets/fullCanlender/css/fullcalendar.print.css" media='print' />-->
+		<link rel="stylesheet" href="../../assets/animate/animate.css" />
+		<style type="text/css">
+			.tixing {
+				color: red;
+				padding-left: 10px;
+				font-size: 18px;
+			}
+
+			.select2-container--default {
+				z-index: 99999999999;
+			}
+
+			.perChoose {
+				height: 40px;
+				font-size: 17px;
+			}
+
+			.chooseName {
+				width: 100px;
+				display: inline-block;
+				text-align: right;
+			}
+
+			.chooseSelect {
+				width: 185px;
+				height: 30px;
+				line-height: 30px;
+			}
+
+			.chooseText {
+				vertical-align: top;
+				width: 185px;
+				height: 86px;
+				line-height: 18px;
+			}
+
+			.deleteEvent {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				cursor: pointer;
+			}
+
+			.mailStyle {
+				display: inline-block;
+				vertical-align: top;
+				word-break: break-all;
+				word-wrap: break-word;
+				width: 150px;
+			}
+
+			.userMsg {
+				color: yellow;
+				font-size: 15px;
+				line-height: 30px;
+				display: inline;
+			}
+
+			.perDayRemark {
+				margin-top: 2px;
+				color: #fff;
+				word-wrap: break-word;
+				word-break: break-all;
+			}
+
+			.fc-day-header {
+				cursor: pointer;
+				position: relative;
+			}
+
+			.viewImg {
+				background: url(../../assets/css/images/view.png);
+				width: 15px;
+				display: inline-block;
+				position: absolute;
+				right: 5px;
+				height: 15px;
+				top: 2px;
+			}
+		</style>
+	</head>
+
+	<body class="hold-transition skin-blue sidebar-mini">
+		<div class="wrapper">
+			<!-- Main Header -->
+			<header class="main-header">
+				<nav class="navbar navbar-static-top" role="navigation" style="margin-left:0">
+					<!-- Navbar Right Menu -->
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<li class="dropdown user user-menu">
+								<!-- Menu Toggle Button -->
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<!-- The user image in the navbar--><img src="" class="user-image" alt="User Image" />
+									<!-- hidden-xs hides the username on small devices so only the image appears. --><span class="hidden-xs"></span> </a>
+								<ul class="dropdown-menu">
+									<!-- The user image in the menu -->
+									<li class="user-header">
+										<img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+									</li>
+									<li class="user-footer">
+										<div class="pull-right">
+											<a id="btn_header_account_signout" class="btn btn-default btn-flat">Sign out</a>
+										</div>
+									</li>
+								</ul>
+							</li>
+							<!-- Control Sidebar Toggle Button -->
+							<li>
+								<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<div class="content-wrapper" style="margin-left:0">
+				<!-- Main content -->
+				<section class="content">
+					<div id="choosePerson" class="my-form" style="display: none;">
+						<div class="perChoose" style="margin-top: 30px;">
+							<span class="chooseName">person: </span>
+							<select class="chooseSelect select2" id="userSelect">
+							</select>
+						</div>
+						<div class="perChoose">
+							<span class="chooseName">remark: </span>
+							<textarea class="chooseText" id="chooseText" name="" rows="" cols="" maxlength="200"></textarea>
+						</div>
+					</div>
+					<div id="todayDetail" style="display: none">
+						<table class="table table-bordered table-striped mine-table" style="text-align: center">
+							<thead>
+								<tr>
+									<td style="width: 20%">name</td>
+									<td style="width: 30%">date</td>
+									<td >remark</td>
+								</tr>
+							</thead>
+							<tbody id="todayDetailBody">
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row animated fadeInRight">
+						<div class="col-xs-12">
+							<div class="box box-info">
+								<div class="box-header with-border">
+									<h3 class="box-title">schedule</h3>
+								</div>
+								<div style="line-height: 40px;font-size: 16px;color: red;padding-left: 10px;">
+									<span>rule</span><span id="ruleUser" style="margin-left: 10px;"></span>
+									<span style="margin-left:20px">update time</span><span id="ruleTime" style="margin-left: 10px;"></span>
+								</div>
+								<div id='calendar'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<!-- /.content-wrapper -->
+			<!-- Main Footer -->
+			<footer class="main-footer" style="margin-left:0">
+				<!-- To the right -->
+				<div class="pull-right hidden-xs">
+					Anything you want
+				</div>
+				<!-- Default to the left -->
+				<strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+			</footer>
+		</div>
+		<!-- ./wrapper -->
+		<!-- REQUIRED JS SCRIPTS -->
+		<script src="../../assets/js/lodash.js"></script>
+		<!-- jQuery 2.1.4 -->
+		<script src="../../assets/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="../../assets/jQuery/jquery.tmpl.js"></script>
+		<script src="../../assets/layer/layer.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../assets/select2/js/select2.full.min.js"></script>
+
+		<!--swicth-->
+		<script type="text/javascript" src="../../assets/switch/dist/js/bootstrap-switch.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/bootstrap-notify.js"></script>
+		<!--fullCanlender-->
+		<script type="text/javascript" src="../../assets/fullCanlender/js/moment.min.js"></script>
+		<script type="text/javascript" src="../../assets/fullCanlender/js/moment-timezone-with-data.js"></script>
+		<script type="text/javascript" src="../../assets/fullCanlender/js/fullcalendar.min.js"></script>
+		<script type="text/javascript" src="../../assets/fullCanlender/js/jquery-ui.custom.min.js"></script>
+		<script type="text/javascript" src="../../assets/jQuery/jQuery.print.js"></script>
+		<script type="text/javascript" src="../../assets/fullCanlender/lang-all.js"></script>
+		<!-- AdminLTE App -->
+		<script src="../../assets/dist/js/app.min.js"></script>
+		<script type="text/javascript">
+			function mockLogic(waitTime, callback) {
+				setTimeout(callback, waitTime * 1000);
+			}
+
+			var departFeature=1;
+			var AweekEnd = "";
+			var AweekStart = "";
+			var pageJsonMap = {};
+
+			$(function() {
+				$(document).on("change", "#departmentSelect", changDepartment);
+				$(document).on("click", ".userMsg", showUserMsg);
+				$(document).on("click", ".deleteEvent", deleteOneEvent);
+				$(document).on("click", ".myTips", editeEvent);
+				$(document).on("click", ".fc-day-header", showThisDayDetail);
+				initPage();
+				$(".select2").select2();
+			});
+
+			$(window).resize(function() {
+				$('#calendar').fullCalendar('option', 'height', $(window).innerHeight() - $("#calendar").offset().top - 90);
+			});
+
+			function showThisDayDetail() {
+				var today = $(this).attr("data-date");
+				var todayhtml = $(this).text();
+
+				var sTime=moment($(this).attr("data-date")).startOf('day').unix();
+				var eTime=moment($(this).attr("data-date")).add(1,'days').startOf('day').unix();
+				var duty = [];
+
+				var eventObjs = $("#calendar").fullCalendar('clientEvents', function(event) {
+					return moment(event.start.format("YYYY-MM-DD HH:mm:ss")).unix()>=sTime && moment(event.end.format("YYYY-MM-DD HH:mm:ss")).unix()<=eTime && event.id!="limitEvent";
+				});
+
+				eventObjs.sort(function(a, b) {
+					return a.start.unix() - b.start.unix()
+				});
+
+				$("#todayDetailBody").empty();
+				$("#todayDetailTmpl").tmpl(eventObjs).appendTo("#todayDetailBody");
+
+				layer.open({
+					title: todayhtml,
+					type: 1,
+					content: $("#todayDetail"),
+					skin: 'layui-layer-lan',
+					area: ["600px", "auto"]
+				});
+			}
+
+			function editeEvent() {
+				var id = $(this).attr("eventId");
+				var event = $("#calendar").fullCalendar('clientEvents', id);
+
+				getPersonsByDepartmentId(pageJsonMap.current.currentHotel, event[0]);
+				$(".chooseText").val(event[0].remark);
+
+				layer.open({
+					title: "Tip",
+					type: 1,
+					content: $("#choosePerson"),
+					skin: 'layui-layer-lan',
+					area: ["320px", "280px"],
+					btn: ["confirm", "cancel"],
+					yes: function(index) {
+						var userName = $('#userSelect option:selected').attr("userName");
+						var userId = $('#userSelect option:selected').attr("userId");
+						var remark = $("#chooseText").val();
+						var newEvent = new Object();
+						newEvent.userId = userId;
+						newEvent.name = userName;
+						newEvent.remark = remark;
+						newEvent.start = event[0].start;
+						newEvent.end = event[0].end;
+						newEvent.id = event[0].id;
+						newEvent._id = event[0]._id;
+						if(!checkLocalScheduleIsOk(newEvent)) {
+							layer.msg("Schedule Exist");
+							return;
+						}
+						var checkArr = new Array();
+						var checkObj = new Object();
+						checkObj.uid = userId;
+						checkObj.start = moment(event[0].start.format("YYYY-MM-DD HH:mm:ss")).unix();
+						checkObj.end = moment(event[0].end.format("YYYY-MM-DD HH:mm:ss")).unix();
+						checkArr.push(checkObj);
+						var checkParam = JSON.stringify({
+							hotelid: pageJsonMap.current.currentHotel,
+							timesheets: checkArr
+						});
+
+						$.ajax({
+							type: 'POST',
+							url: pageJsonMap.checkSchedulesOfUsersInTime.link_url,
+							data: checkParam,
+						}).done(function(checkData) {
+							if(checkData.length > 0 && checkData[0].departFeature != departFeature) {
+								layer.msg("Schedule Exist");
+								return;
+							} else {
+								event[0].userId = userId;
+								event[0].name = userName;
+								event[0].remark = remark;
+								$('#calendar').fullCalendar('updateEvent', event[0]);
+								layer.close(index);
+							}
+						});
+
+					},
+					cancel: function(index) {
+						layer.close(index);
+						$('#calendar').fullCalendar('unselect');
+					},
+					end: function(index) {
+						layer.close(index);
+						$('#calendar').fullCalendar('unselect');
+					}
+				});
+			}
+
+			function deleteOneEvent(e) {
+				e.stopPropagation();
+				var eventId = $(this).attr("eventId");
+				$("#calendar").fullCalendar('removeEvents', function(event) {
+					if(eventId == event._id) {
+						return true;
+					}
+					return false;
+				})
+			}
+
+			function showUserMsg(e) {
+				e.stopPropagation();
+				var userId = $(this).attr("userId");
+				var _id = $(this).attr("id");
+				getPersonById(userId, _id);
+			}
+
+			function changDepartment() {
+				var departmentId = $('#departmentSelect option:selected').attr("departmentId");
+				var hotelId = $('#departmentSelect option:selected').attr("hotelId");
+				getPersonsByDepartmentId(hotelId, departmentId);
+			}
+
+			function initPage() {
+				mockLogic(2, function() {
+					pageJsonMap.current = {
+							"user": {
+									"id": 1,
+									"isAdmin": 1,
+									"name": "Default Admin",
+									"phone": "111111",
+									"mail": "",
+									"account": "adminTest",
+									"password": "e1das0adcasd3a949b1ad59abdfbes56e012!@#1sd57f20f883e",
+									"face": "",
+									"position": "",
+									"remark": "",
+									"status": 1,
+									"hotel": null,
+									"department": null
+							},
+							"authKey": "e94fc417-45e4-48f5-a30e-550f07a8643e",
+							"currentHotel": 1,
+							"currentHotelName": "Hilton Hasbrouck Heights",
+							"hotelHtml": "<option value='0'>Corporate Office</option><option selected=selected value=1>Hilton Hasbrouck Heights</option><option value=2>Crowne Plaza Edison</option>",
+							"hotels": [{
+									"id": 1,
+									"status": 1,
+									"firstday": 5,
+									"name": "Hilton Hasbrouck Heights",
+									"marketingNumber": "",
+									"roomtotal": 355,
+									"remark": null,
+									"timezone": "EST",
+									"rooms": [{
+											"category": "Hasbrouck Room - 1 King",
+											"number": 98
+									}, {
+											"category": "Hasbrouck Room - 2 Double",
+											"number": 184
+									}, {
+											"category": "NYC Skyline View - 1 King",
+											"number": 22
+									}, {
+											"category": "NYC Skyline View 2 - Double",
+											"number": 27
+									}, {
+											"category": "1 King Accessible with Roll-in Shower",
+											"number": 5
+									}, {
+											"category": "1 King Junior Suite Accessible with Roll-in Shower",
+											"number": 1
+									}, {
+											"category": "2 Double Accessible with Bathtub",
+											"number": 4
+									}, {
+											"category": "Junior Suite",
+											"number": 10
+									}, {
+											"category": "NYC Skyline Suite",
+											"number": 1
+									}, {
+											"category": "1 King City View Suite Accessible with Roll-in Shower",
+											"number": 1
+									}, {
+											"category": "1 King Presidential Accessible with Roll-in Shower",
+											"number": 1
+									}, {
+											"category": "Presidential Suite",
+											"number": 1
+									}],
+									"brand": {
+											"id": 1,
+											"name": "Hilton",
+											"parentid": 0,
+											"remark": "",
+											"isParent": null
+									}
+							}, {
+									"id": 2,
+									"status": 1,
+									"firstday": 6,
+									"name": "Crowne Plaza Edison",
+									"marketingNumber": "",
+									"roomtotal": 169,
+									"remark": null,
+									"timezone": "EST",
+									"rooms": [{
+											"category": "King Presidential Suite",
+											"number": 2
+									}, {
+											"category": "King Junior Suite",
+											"number": 3
+									}, {
+											"category": "King Executive",
+											"number": 24
+									}, {
+											"category": "King Standard",
+											"number": 63
+									}, {
+											"category": "King Handicup Tub",
+											"number": 3
+									}, {
+											"category": "King Handicup Roll-in Shower",
+											"number": 2
+									}, {
+											"category": "Doubles Standard",
+											"number": 56
+									}, {
+											"category": "Doubles Handicup Tub",
+											"number": 4
+									}, {
+											"category": "Doubles Executive",
+											"number": 12
+									}],
+									"brand": {
+											"id": 2,
+											"name": "Intercontinental Hotel Group",
+											"parentid": 0,
+											"remark": "",
+											"isParent": null
+									}
+							}]
+					};
+
+					pageJsonMap.PersonMsg = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: 3004,
+						link_url: "user.json",
+						order: 2
+					};
+					pageJsonMap.departmentsData = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: 3007,
+						link_url: "departments.json",
+						order: 2
+					};
+					pageJsonMap.usersData = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: 3008,
+						link_url: "users.json",
+						operationId: "getUserList",
+						order: 2
+					};
+					pageJsonMap.getDepartmentList = {
+						className: "fa fa-circle-o",
+						isDir: false,
+						key: "btn_basic_departmentList_search",
+						link_id: 231,
+						link_url: "departments.json",
+						order: 3,
+						service_id: 31,
+						status: 1
+					};
+					pageJsonMap.getDutyByHidWithWeek = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: "getDutyByHidWithWeek",
+						link_url: "duty.json",
+						order: 2,
+						service_id: 38,
+						status: 1
+					};
+					pageJsonMap.addDutyByWeek = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: "addDutyByWeek",
+						link_url: "addDuty.json",
+						order: 2,
+						service_id: 40,
+						status: 1
+					};
+					pageJsonMap.editDutyByWeek = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: "editDutyByWeek",
+						link_url: "duty.json",
+						order: 2,
+						service_id: 41,
+						status: 1
+					};
+					pageJsonMap.getDutyRuleByid = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: "getDutyRuleByid",
+						link_url: "",
+						order: 2
+					};
+					pageJsonMap.getDutyRuleByHid = {
+						className: "",
+						isDir: false,
+						key: "",
+						link_id: "getDutyRuleByHid",
+						link_url: "dutyRule.json",
+						order: 2
+					};
+					pageJsonMap.checkSchedulesOfUsersInTime = {
+						className: "fa fa-circle-o",
+						isDir: false,
+						key: "",
+						link_id: "checkSchedulesOfUsersInTime",
+						link_url: "schedule_users.json",
+						order: 2,
+						service_id: 95,
+						status: 1
+					};
+
+					$(document).ajaxSend(function(event, jqxhr, settings) {
+						jqxhr.setRequestHeader("x-auth-token", pageJsonMap.current.authKey);
+					});
+
+					renderCalendar();
+					$('#calendar').fullCalendar('option', 'height', $(window).innerHeight() - $("#calendar").offset().top - 90);
+				});
+			}
+			var timeZone="EST5EDT";
+			function renderCalendar() {
+				$('#calendar').fullCalendar({
+					customButtons: {
+						myCustomButton: {
+							text: "save",
+							click: function() {
+								var hotelid = pageJsonMap.current.currentHotel;
+								var view = $('#calendar').fullCalendar('getView');
+								//本周开始和结束时间
+								var weekStart = moment(view.start).format('YYYY-MM-DD');
+								var weekEnd = moment(view.end).subtract(1, 'days').format('YYYY-MM-DD');
+								var duty = [];
+								//获取所有节点
+								var eventObjs = $("#calendar").fullCalendar('clientEvents', function(event) {
+									var eventStart = event.start.format('YYYY-MM-DD');
+									var eventEnd = event.end ? event.end.format('YYYY-MM-DD') : null;
+									return(eventStart >= weekStart && ((eventEnd != null && eventEnd <= weekEnd) || (eventEnd == null && eventStart <= eventStart)) && (event.id != "limitEvent"));
+								});
+
+								if(eventObjs.length == 0) {
+									layer.msg("noEvent");
+									return;
+								}
+
+								var isOk = false;
+								for(var m = 0; m < dutyRule.length; m++) {
+									//1获得当天的规则
+									var thisDay = moment(dutyRule[m].start).format('YYYY-MM-DD');
+									var sTime = moment(dutyRule[m].start).format('YYYY-MM-DD HH:mm:ss');
+									var eTime = moment(dutyRule[m].end).format('YYYY-MM-DD HH:mm:ss');
+									var todayEvents = $("#calendar").fullCalendar('clientEvents', function(event) {
+										return(moment(event.start).format('YYYY-MM-DD').indexOf(thisDay) != -1 && event.id != "limitEvent");
+									});
+									//多少个半个小时
+									var len = (moment(dutyRule[m].end) - moment(dutyRule[m].start)) / 1000 / 60 / 30;
+
+									for(var k = 0; k <= (len); k++) {
+										//开始时间+30分钟以后的时间
+										var laterTime = moment(dutyRule[m].start).add(k * 29, 'minutes').add(59, 'seconds');
+										isOk = false;
+										for(var p = 0; p < todayEvents.length; p++) {
+											var oneTodayEvents = todayEvents[p];
+
+											if(laterTime.format('YYYY-MM-DD HH:mm:ss') >= oneTodayEvents.start.format('YYYY-MM-DD HH:mm:ss') && laterTime.format('YYYY-MM-DD HH:mm:ss') <= oneTodayEvents.end.format('YYYY-MM-DD HH:mm:ss')) {
+												isOk = true;
+												break;
+											}
+										}
+										if(!isOk) {
+											break;
+										}
+									}
+
+									if(!isOk) {
+										break;
+									}
+								}
+								//变成字段类型
+								for(var i = 0; i < eventObjs.length; i++) {
+									var obj = eventObjs[i];
+									var eventObj = {
+										departmentId: eventObjs[i].departmentId,
+										userId: eventObjs[i].userId,
+										remark: eventObjs[i].remark,
+										allday: false,
+										title: obj.title,
+										start: moment(obj.start).format('YYYY-MM-DDTHH:mm:ss'),
+										end: moment(obj.end).format('YYYY-MM-DDTHH:mm:ss')
+									}
+									duty.push(eventObj);
+								}
+
+								layer.confirm("Announce Or Not", {
+										skin: 'layui-layer-lan',
+										title: "Tip",
+										btn: ["confirm", "cancel"]
+									},
+									function(index) {
+										var data = JSON.stringify({
+											hotelid: pageJsonMap.current.currentHotel,
+											start: moment(weekStart).unix(),
+											end: moment(weekEnd).unix(),
+											duty: JSON.stringify(duty),
+											status: 1
+										});
+										if(isAdd) {
+											$.ajax({
+												type: 'POST',
+												url: pageJsonMap.addDutyByWeek.link_url,
+												data: data,
+											}).done(function(data) {
+												isAdd = false;
+												editId = data.id;
+												if(isOk) {
+													layer.msg("Save Success");
+												} else {
+													layer.msg("Cannot Public");
+												}
+											});
+										} else {
+											$.ajax({
+												type: 'POST',
+												url: pageJsonMap.editDutyByWeek.link_url,
+												data: data,
+											}).done(function(data) {
+												if(isOk) {
+													layer.msg("Save Success");
+												} else {
+													layer.msg("Cannot Public");
+												}
+											});
+										}
+									},
+									function() {
+										var data = JSON.stringify({
+											hotelid: pageJsonMap.current.currentHotel,
+											start: moment(weekStart).unix(),
+											end: moment(weekEnd).unix(),
+											duty: JSON.stringify(duty),
+											status: 0
+										});
+										if(isAdd) {
+											$.ajax({
+												type: 'POST',
+												url: pageJsonMap.addDutyByWeek.link_url,
+												data: data,
+											}).done(function(data) {
+												isAdd = false;
+												editId = data.id;
+												layer.msg("Save Success");
+											});
+										} else {
+											$.ajax({
+												type: 'POST',
+												url: pageJsonMap.editDutyByWeek.link_url,
+												data: data,
+											}).done(function(data) {
+												layer.msg("Save Success");
+											});
+										}
+									}
+								);
+							}
+						}
+					},
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'myCustomButton'
+					},
+					defaultDate: "2016-08-30",
+					weekends: true, //是否显示周末
+					height: 700,
+					defaultView: 'agendaWeek',
+					selectable: true,
+					nowIndicator: true,
+					timezone:'America/Chicago',
+					selectConstraint: 'limitEvent',
+					eventConstraint: 'limitEvent',
+					selectHelper: true,
+					unselectAuto: false,
+					allDaySlot: false, //控制all-day是否显示
+					editable: true,
+					lang: "en",
+					firstDay: 6, //每周的开始时间
+					eventLimit: true, // allow "more" link when too many events
+					eventRender: function(event, element) {
+						var nowTime = moment().format('YYYY-MM-DD');
+						var view = $('#calendar').fullCalendar('getView');
+						var weekStart = moment(view.start).format('YYYY-MM-DD');
+						var weekEnd = moment(view.end).format('YYYY-MM-DD');
+						if(AweekEnd < weekEnd || weekEnd <= nowTime) {
+							event.editable = false;
+						}
+						if(event.id == "limitEvent") {} else {
+							element.html($('#perDay').tmpl(event));
+						}
+					},
+					viewRender: function(view, element) {
+						var view = $('#calendar').fullCalendar('getView');
+						if(AweekEnd == "") {
+							//获取当前周的开始时间和结束时间
+							AweekEnd = moment(view.end).add(14, 'days').format('YYYY-MM-DD');
+							AweekStart = moment(view.start).add(14, 'days').format('YYYY-MM-DD');
+						}
+						var nowTime = moment().format('YYYY-MM-DD');
+						var view = $('#calendar').fullCalendar('getView');
+						var weekStart = moment(view.start).format('YYYY-MM-DD');
+						var weekEnd = moment(view.end).format('YYYY-MM-DD');
+						if(AweekEnd < weekEnd || weekEnd <= nowTime) {
+							$(".fc-myCustomButton-button").hide();
+						} else {
+							$(".fc-myCustomButton-button").show();
+						}
+						$('#calendar').fullCalendar('removeEvents');
+						$(".fc-day-header").append("<span class='viewImg'></span>");
+					},
+					eventAfterRender: function(event, element) {
+						var nowTime = moment().format('YYYY-MM-DD');
+						var view = $('#calendar').fullCalendar('getView');
+						var weekStart = moment(view.start).format('YYYY-MM-DD');
+						var weekEnd = moment(view.end).format('YYYY-MM-DD');
+						if(weekEnd <= nowTime) {
+							$(".deleteEvent").hide();
+							$(".fc-end-resizer").hide();
+							$(document).off("click", ".myTips");
+						}
+					},
+					eventSources: [
+						// your event source
+						{
+							events: getEmployeeData
+						}
+					],
+					select: function(start, end) {
+						var nowTime = moment().format('YYYY-MM-DD');
+						var view = $('#calendar').fullCalendar('getView');
+						//本周开始和结束时间
+						var weekStart = moment(view.start).format('YYYY-MM-DD');
+						var weekEnd = moment(view.end).format('YYYY-MM-DD');
+						if(AweekEnd < weekEnd) {
+							$('#calendar').fullCalendar('unselect');
+							return;
+						}
+						if(weekEnd <= nowTime) {
+							$('#calendar').fullCalendar('unselect');
+							return;
+						}
+						//初始化select
+						getPersonsByDepartmentId(pageJsonMap.current.currentHotel);
+						$(".chooseText").val("");
+						layer.open({
+							title: "Tip",
+							type: 1,
+							content: $("#choosePerson"),
+							skin: 'layui-layer-lan',
+							area: ["320px", "280px"],
+							btn: ["confirm", "cancel"],
+							yes: function(index) {
+								var departmentName = $('#departmentSelect option:selected').val();
+								var departmentId = $('#departmentSelect option:selected').attr("departmentId");
+								var userName = $('#userSelect option:selected').attr("userName");
+								var userId = $('#userSelect option:selected').attr("userId");
+								if(userId == undefined) {
+									layer.msg("person empty");
+									return;
+								}
+								var remark = $("#chooseText").val();
+								eventData = {
+									departmentId: departmentId,
+									userId: userId,
+									name: userName,
+									remark: remark,
+									title: remark,
+									start: start,
+									end: end
+								};
+								if(!checkLocalScheduleIsOk(eventData)) {
+									layer.msg("Schedule Exist");
+									return;
+								}
+								var checkArr = new Array();
+								var checkObj = new Object();
+								checkObj.uid = userId;
+								checkObj.start = moment(start.format("YYYY-MM-DD HH:mm:ss")).unix();
+								checkObj.end = moment(end.format("YYYY-MM-DD HH:mm:ss")).unix();
+								checkArr.push(checkObj);
+								var checkParam = JSON.stringify({
+									hotelid: pageJsonMap.current.currentHotel,
+									timesheets: checkArr
+								});
+
+								$.ajax({
+									type: 'POST',
+									url: pageJsonMap.checkSchedulesOfUsersInTime.link_url,
+									data: checkParam,
+								}).done(function(checkData) {
+									if(checkData.length > 0 && checkData[0].departFeature != departFeature) {
+										layer.msg("Schedule Exist");
+										return;
+									} else {
+										$('#calendar').fullCalendar('renderEvent', eventData, true);
+										$('#calendar').fullCalendar('unselect');
+										layer.close(index);
+									}
+								});
+							},
+							cancel: function(index) {
+								layer.close(index);
+								$('#calendar').fullCalendar('unselect');
+							},
+							end: function(index) {
+								layer.close(index);
+								$('#calendar').fullCalendar('unselect');
+							}
+						});
+					},
+					unselect: function(start, end) {
+						var view = $('#calendar').fullCalendar('getView');
+						var nowTime = moment().format('YYYY-MM-DD');
+						var weekEnd = moment(view.end).format('YYYY-MM-DD');
+						if(AweekEnd < weekEnd) {
+							layer.msg("Only Two Weeks");
+							return;
+						}
+						if(weekEnd <= nowTime) {
+							layer.msg("Formal Weeks Cannot");
+							return;
+						}
+					},
+					eventResize: function(event, delta, revertFunc, jsEvent, ui, view) {
+						if(!checkLocalScheduleIsOk(event)) {
+							revertFunc();
+							layer.msg("Schedule Exist");
+							return;
+						}
+						var checkArr = new Array();
+						var checkObj = new Object();
+						checkObj.uid = event.userId;
+						checkObj.start = moment(event.start.format("YYYY-MM-DD HH:mm:ss")).unix();
+						checkObj.end = moment(event.end.format("YYYY-MM-DD HH:mm:ss")).unix();
+						checkArr.push(checkObj);
+						var checkParam = JSON.stringify({
+							hotelid: pageJsonMap.current.currentHotel,
+							timesheets: checkArr
+						});
+
+						$.ajax({
+							type: 'POST',
+							url: pageJsonMap.checkSchedulesOfUsersInTime.link_url,
+							data: checkParam,
+						}).done(function(checkData) {
+							if(checkData.length > 0 && checkData[0].departFeature != departFeature) {
+								revertFunc();
+								layer.msg("Schedule Exist");
+								return;
+							}
+						});
+					},
+					eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
+						if(!checkLocalScheduleIsOk(event)) {
+							revertFunc();
+							layer.msg("Schedule Exist");
+							return;
+						}
+						var checkArr = new Array();
+						var checkObj = new Object();
+						checkObj.uid = event.userId;
+						checkObj.start = event.start.unix();
+						checkObj.end = event.end.unix();
+						checkArr.push(checkObj);
+						var checkParam = JSON.stringify({
+							hotelid: pageJsonMap.current.currentHotel,
+							timesheets: checkArr
+						});
+
+						$.ajax({
+							type: 'POST',
+							url: pageJsonMap.checkSchedulesOfUsersInTime.link_url,
+							data: checkParam,
+						}).done(function(checkData) {
+							if(checkData.length > 0 && checkData[0].departFeature != departFeature) {
+								revertFunc();
+								layer.msg("Schedule Exist");
+								return;
+							}
+						});
+
+					}
+				});
+			}
+
+			function getPersonById(personId, _id) {
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.PersonMsg.link_url,
+					data: {},
+				}).done(function(data) {
+					layer.tips($('#tipTmpl').tmpl(data).html(), "#" + _id, {
+						tips: [4, '#3595CC'],
+						time: 3000,
+					});
+				});
+			}
+			var isAdd = true;
+			var ruleEventObjs = []; //限制数据源
+			//对应的duty的id
+			var editId = 0;
+			var dutyRule = {};
+
+			function getEmployeeData(start, end, timezone, callback) {
+				ruleEventObjs = new Array();
+				var data = {
+					hotelid: pageJsonMap.current.currentHotel,
+					start: moment(start.format("YYYY-MM-DD HH:mm:ss")).unix(),
+					end: moment(end.format("YYYY-MM-DD HH:mm:ss")).subtract(1, 'days').unix()
+				};
+
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.getDutyByHidWithWeek.link_url,
+					data: data,
+				}).done(function(doc) {
+					if(doc.ruleid != undefined) {
+						isAdd = false; //有对应数据就是编辑
+						editId = doc.id;
+						//获取对应的规则
+						$.ajax({
+							type: 'GET',
+							url: pageJsonMap.getDutyRuleByid.link_url,
+							data: {},
+						}).done(function(rule) {
+							if(jQuery.isEmptyObject(rule)) {
+								layer.msg("noRule");
+								return;
+							}
+							//修改提示语
+							$.ajax({
+								type: 'GET',
+								url: pageJsonMap.usersData.link_url,
+								data: {
+									ids: rule.updateid
+								},
+							}).done(function(data) {
+								$("#ruleUser").text(data.users[0].name);
+							});
+							$("#ruleTime").text(rule.updatetime);
+							//限制格子的颜色
+							var view = $('#calendar').fullCalendar('getView');
+							var weekStart = moment(view.start).format('YYYY-MM-DD');
+							var weekEnd = moment(view.end).format('YYYY-MM-DD');
+							for(var s = 0; s < JSON.parse(rule.rule).length; s++) {
+								var oneRule = JSON.parse(rule.rule)[s];
+								if(oneRule.start == undefined) {
+									continue;
+								}
+								var dayTime = moment(view.start).add(s, 'days').format('YYYY-MM-DD');
+								oneRule.start = dayTime + " " + oneRule.start;
+								if(oneRule.end=="00:00:00"){
+									oneRule.end = moment(dayTime).add(1, 'days').startOf('day').format("YYYY-MM-DD HH:mm:ss");
+								}else{
+									oneRule.end = dayTime + " " + oneRule.end;
+								}
+								oneRule.id = "limitEvent";
+								oneRule.color = "blue";
+								oneRule.rendering = 'background',
+									ruleEventObjs.push(oneRule);
+							}
+							dutyRule = ruleEventObjs;
+							$('#calendar').fullCalendar('addEventSource', ruleEventObjs);
+						});
+
+						var events = [];
+						var usersStr = "";
+						//json化返回的duty
+						var duty = JSON.parse(doc.duty);
+						for(var i = 0; i < duty.length; i++) {
+							usersStr += duty[i].userId + ",";
+						}
+						usersStr = usersStr.substring(0, usersStr.length - 1);
+						var userData = {
+							ids: usersStr
+						};
+
+						$.ajax({
+							type: 'GET',
+							url: pageJsonMap.usersData.link_url,
+							data: userData,
+						}).done(function(data) {
+							for(var j = 0; j < duty.length; j++) {
+								var oneDuty = duty[j];
+								for(var k = 0; k < data.users.length; k++) {
+									var oneUser = data.users[k];
+									if(oneDuty.userId == oneUser.id) {
+										duty[j].name = data.users[k].name;
+										duty[j].mail = data.users[k].mail;
+										duty[j].phone = data.users[k].phone;
+										duty[j].title = doc.duty[j].remark;
+										events.push(duty[j]);
+										break;
+									}
+								}
+							}
+							callback(events);
+						});
+
+					} else {
+						isAdd = true;
+						$.ajax({
+							type: 'GET',
+							url: pageJsonMap.getDutyRuleByHid.link_url,
+							data: {
+								hotelid: pageJsonMap.current.currentHotel
+							}
+						}).done(function(lastRule) {
+							if(jQuery.isEmptyObject(lastRule)) {
+								layer.msg("noRule");
+								return;
+							}
+
+							$.ajax({
+								type: 'GET',
+								url: pageJsonMap.usersData.link_url,
+								data: {
+									ids: lastRule.updateid
+								}
+							}).done(function(data) {
+								$("#ruleUser").text(data.users[0].name);
+							});
+
+							$("#ruleTime").text(lastRule.updatetime);
+							ruleEventObjs = new Array();
+							//限制格子的颜色
+							var view = $('#calendar').fullCalendar('getView');
+							var weekStart = moment(view.start).format('YYYY-MM-DD');
+							for(var s = 0; s < JSON.parse(lastRule.rule).length; s++) {
+								var oneRule = JSON.parse(lastRule.rule)[s];
+								if(oneRule.start == undefined) {
+									continue;
+								}
+								var dayTime = moment(view.start).add(s, 'days').format('YYYY-MM-DD');
+								oneRule.start = dayTime + " " + oneRule.start;
+								if(oneRule.end=="00:00:00"){
+									oneRule.end = moment(dayTime).add(1, 'days').startOf('day').format("YYYY-MM-DD HH:mm:ss");
+								}else{
+									oneRule.end = dayTime + " " + oneRule.end;
+								}
+								oneRule.id = "limitEvent";
+								oneRule.color = "blue";
+								oneRule.rendering = 'background',
+									ruleEventObjs.push(oneRule);
+							}
+							dutyRule = ruleEventObjs;
+							callback(ruleEventObjs);
+						});
+					}
+				});
+			}
+
+			function getDepartmentsByHotelId(hotelId, event) {
+				var data = {
+					hotelids: hotelId
+				};
+
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.departmentsData.link_url,
+					data: data
+				}).done(function(data) {
+					$("#departmentSelect").empty();
+					$('#departmentSelectTmpl').tmpl(data.departments).appendTo('#departmentSelect');
+					var departmentId = $('#departmentSelect option:selected').attr("departmentId");
+					var hotelIdId = $('#departmentSelect option:selected').attr("hotelId");
+					getPersonsByDepartmentId(hotelIdId, departmentId, event);
+				});
+			}
+
+			function getPersonsByDepartmentId(hotelId, event) {
+				//逻辑调整，现根据部门特征值获取部门Id
+				var departmentIds = new Array();
+				var param1 = {
+					hotelids: parseInt(pageJsonMap.current.currentHotel),
+					feature: departFeature
+				};
+
+				$.ajax({
+					type: 'GET',
+					url: pageJsonMap.getDepartmentList.link_url,
+					data: param1
+				}).done(function(departmentData) {
+						for(var k = 0; k < departmentData.departments.length; k++) {
+							departmentIds.push(departmentData.departments[k].id)
+						}
+						//逻辑调整，根据部门Id获取的
+						var data = {
+							hotelid: hotelId,
+							departmentid: departmentIds.join(",")
+						};
+
+						$.ajax({
+							type: 'GET',
+							url: pageJsonMap.usersData.link_url,
+							data: data
+						}).done(function(data) {
+							$("#userSelect").empty();
+							$('#userSelectTmpl').tmpl(data.users).appendTo('#userSelect');
+							if(event) {
+								$("#userSelect option[userId=" + event.userId + "]").attr("selected", true);
+							}
+						});
+					});
+			}
+
+			function checkLocalScheduleIsOk(event) {
+				var eventObjs = $("#calendar").fullCalendar('clientEvents', function(event2) {
+					if(((event.id && event2.id && event.id == event2.id) || event._id == event2._id) && (event.id != "limitEvent")) {
+						return false;
+					}
+					return true;
+				});
+				var sortEventObjs = sortDataById(eventObjs);
+				for(var i = 0; i < sortEventObjs.length; i++) {
+					var oneSortEventObjs = sortEventObjs[i];
+					if(event.userId == oneSortEventObjs.userId) {
+						for(var j = 0; j < oneSortEventObjs.data.length; j++) {
+							var oneEvent = oneSortEventObjs.data[j];
+							if(oneEvent.start.unix() <= event.start.unix() && oneEvent.end.unix() >= event.end.unix() ||
+								oneEvent.start.unix() > event.start.unix() && event.end.unix() > oneEvent.start.unix() && oneEvent.end.unix() > event.end.unix() ||
+								oneEvent.start.unix() < event.start.unix() && oneEvent.end.unix() > event.start.unix() && event.end.unix() > oneEvent.end.unix() ||
+								oneEvent.start.unix() >= event.start.unix() && oneEvent.end.unix() <= event.end.unix()) {
+								return false;
+							}
+						}
+					}
+				}
+				return true;
+			}
+
+			function sortDataById(Array) {
+				var map = {},
+					dest = [];
+				for(var i = 0; i < Array.length; i++) {
+					var ai = Array[i];
+					if(!map[ai.userId]) {
+						dest.push({
+							userId: ai.userId,
+							data: [ai]
+						});
+						map[ai.userId] = ai;
+					} else {
+						for(var j = 0; j < dest.length; j++) {
+							var dj = dest[j];
+							if(dj.userId == ai.userId) {
+								dj.data.push(ai);
+								break;
+							}
+						}
+					}
+				}
+				return dest;
+			}
+		</script>
+	</body>
+	<script id="tipTmpl" type="text/x-jquery-tmpl">
+		<div id="tipTmpl" style="font-size: 14px;">
+			<div style="font-size: 14px;">
+				<span style="font-size: 15px;color: yellow;">{{= name}}</span>
+			</div>
+			<div style="font-size: 14px;" class="tipDepartment">
+				<span>department:</span>
+				<span style="display: inline-block;vertical-align: top;">{{each(j,d) department}}{{= d.name}}<br>{{/each}}</span>
+			</div>
+			<div style="font-size: 14px;" class="tipPhone">
+				<span>phone:</span><span>{{= phone}}</span>
+			</div>
+			<div style="font-size: 14px;" class="tipMail">
+				<span>mail:</span><span class="mailStyle">{{= mail}}</span>
+			</div>
+		</div>
+	</script>
+	<script id="departmentSelectTmpl" type="text/x-jquery-tmpl">
+		<option departmentId="{{= id}}" hotelId="{{= hotelid}}">{{= name}}</option>
+	</script>
+	<script id="userSelectTmpl" type="text/x-jquery-tmpl">
+		<option userId="{{= id}}" userName="{{= name}}">{{= name}}({{= position}})</option>
+	</script>
+	<script id="perDay" type="text/x-jquery-tmpl">
+		<div style="position:relative;height: 100%;" class="myTips" eventId="{{= _id}}">
+			<img src="../../assets/css/images/delete.png" alt="" class="deleteEvent" eventId="{{= _id}}" />
+			<div style="font-size:15px" class="perDayTime">
+				<span class="perDayTimeS">{{= moment(start).format('HH:mm')}}</span> -
+				<span class="perDayTimeE">{{= moment(end).format('HH:mm')}}</span>
+			</div>
+			<div class="userMsg" id="{{= _id}}" userId="{{= userId}}">
+				{{= name}}
+			</div>
+			<div class="perDayRemark">
+				<span style="font-size:15px">remark:</span>
+				<span class="perDayRemark2">{{= remark}}</span>
+			</div>
+			<div class="fc-resizer fc-end-resizer"></div>
+		</div>
+	</script>
+	<script id="todayDetailTmpl" type="text/x-jquery-tmpl">
+		<tr>
+			<td>{{= name}}</td>
+			<td>{{= start.format("HH:mm")}}~{{= end.format("HH:mm")}}</td>
+			<td>{{= remark}}</td>
+		</tr>
+	</script>
+</html>

@@ -1,0 +1,31 @@
+{
+    "users": [{
+        "id": 1,
+        "isAdmin": 1,
+        "name": "Admin NI",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "admin ",
+        "remark": null,
+        "status": 1,
+        "hotels": null,
+        "departments": null
+    },
+		{
+        "id": 723,
+        "isAdmin": 0,
+        "name": "kazaff",
+        "phone": null,
+        "mail": null,
+        "account": null,
+        "face": "",
+        "position": "coder ",
+        "remark": null,
+        "status": 1,
+        "hotels": null,
+        "departments": null
+    }
+	]
+}
