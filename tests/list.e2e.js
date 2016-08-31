@@ -120,8 +120,9 @@ describe('列表页面', function() {
 			this.mouse.up(0, 0);
 			'#layui-layer-moves'.should.be.not.inDOM;
 
-			// todo 可能是由于当前场景的问题，无法移动窗口，且坐标毫无规则，每次up调用时都会丢失移动
+			// todo 由于当前场景的问题，无法移动窗口，且坐标毫无规则，每次up调用时都会丢失移动
 			// 但mouse方法应该是生效了，这一点可以通过注释up调用后看截屏，明显可以看到移动生效了
+			// 同时我也尝试纯js方式来模拟拖动（https://ghostinspector.com/blog/simulate-drag-and-drop-javascript-casperjs/），依然无效
 			// var newPosition = this.getElementBounds('.layui-layer');
 			// expect(newPosition.left).to.equal(0);
 			// expect(newPosition.top).to.equal(0);
