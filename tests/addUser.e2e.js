@@ -228,7 +228,7 @@ describe('新增用户页面', function() {
 
 				// 注意，这里必须使用thenClick，连续使用两次click的话无法满足需求
 				// 这里算是被测页面的一个bug，因为下拉菜单的数据是ajax获取来的，若两次click点击频率短到ajax响应时间，则ajax的回调函数中操作dom的方法写的有问题
-				// 改用thenClick，可以规避这个设计问题，但更好的方法是对被测页面进行修改
+				// 改用thenClick，可以规避这个设计问题，但更好的方法是对被测页面进行修改，只是这个问题在人为操作下不会发生
 				this.thenClick('#addDepartment', function(){
 					this.mouse.click('input.myRadio', 1, 1);
 					this.thenClick('#addDepartment', function(){	// 推荐，在任何情况下都首选使用thenClick，而非click
@@ -245,12 +245,12 @@ describe('新增用户页面', function() {
 	});
 
 	//=========用来辅助写测试用例，可以实时反馈页面的状态=========
-	it('Test截屏', function(){
-		casper.then(function(){
-			this.wait(1500, function() {
-				this.userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36');
-				this.capture('test.png');
-			});
-		});
-	});
+	// it('Test截屏', function(){
+	// 	casper.then(function(){
+	// 		this.wait(1500, function() {
+	// 			this.userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36');
+	// 			this.capture('test.png');
+	// 		});
+	// 	});
+	// });
 });

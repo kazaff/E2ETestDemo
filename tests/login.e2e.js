@@ -1,6 +1,7 @@
 describe('登录页面', function() {
   before(function() {
     casper.start('http://localhost/E2ETestDemo/pages/login/login.html');
+		casper.viewport(1024, 768);
 		// 重要：必须找到机制能够确保被测页面一切就绪（js加载执行），
 		// 这里使用的是监督目标DOM是否出现，这个DOM是由被测页面中js动态创建的，一旦它出现，证明页面一切就绪。
 		// 若被测页面没有类似行为，你只能考虑预设一个时间差，使用casper.wait()接口
@@ -121,7 +122,6 @@ describe('登录页面', function() {
 	// 	casper.then(function(){
 	// 		this.wait(1, function() {
 	// 			this.userAgent('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36');
-	// 			this.viewport(1024, 768);
 	// 			this.capture('test.png');
 	// 		});
 	// 	});
